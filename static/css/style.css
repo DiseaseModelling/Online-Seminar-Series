@@ -1,0 +1,188 @@
+/* ========================= Grundlayout ========================= */
+body {
+  font-family: 'Inter', sans-serif;
+  font-weight: 200;
+  background-color: #FFFFFF;
+  color: #280003;
+  line-height: 1.6;
+  margin: 0;          /* statt auto */
+}
+.wrapper {
+max-width: 1500px;
+margin: 0 auto;
+padding: 0 40px;
+}
+main {
+  margin-top: 30px;
+}
+
+/* ========================= Typografie ========================= */
+h1 {
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  color: #009bb9;
+  margin-top: 1.5em;
+}
+h1 { font-size: 2rem; }
+h2 { font-size: 1.5rem; 
+   color: #00778F;
+}
+h3 { font-size: 1.2rem; 
+   color: #00778F;
+}
+
+a { font-size: 1.2rem;
+  color: #9BC996;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+  color: #9BC996;
+}
+
+/* ========================= Topbar ========================= */
+.topbar {
+  text-align: left;
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+  color:#00778F;
+}
+.topbar a {
+  margin-left: 10px;
+  color:#00778F;
+}
+
+/* ========================= Navigation ========================= */
+.main-nav {
+  display: flex;
+  align-items: auto;
+  gap: 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #e0e0e0;
+  font-size: 0.95rem;
+}
+.main-nav .nav-item:not(.subscribe) {
+  color:  #280003;
+  padding-bottom: 8px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.main-nav .nav-item:not(.subscribe):hover {
+  color: #9BC996;
+}
+.main-nav .nav-item:not(.subscribe).active{
+  color: #9BC996;
+}
+.subscribe {
+margin-left: auto;
+}
+.subscribe {
+background-color: #9BC996;   /* grün */
+color: #ffffff;              /* weiße Schrift */
+padding: 8px 16px;
+border-radius: 20px;         /* abgerundete Ecken */
+font-weight: 600;
+text-decoration: none;
+white-space: nowrap;
+transition: background-color 0.2s ease, transform 0.15s ease;
+}
+.subscribe:hover {
+background-color: #82b880;   /* etwas dunkler */
+transform: translateY(-1px);
+}
+/* ========================== Boxen =================*/
+.page-layout {
+max-width: 1500px;
+margin: 50px auto;
+padding: 0 40px;
+
+display: grid;
+grid-template-columns: 280px 1fr 320px;
+gap: 3rem;
+align-items: start;
+}
+
+.main-content {
+/*flex: 3;*/
+}
+
+.side-info {
+flex: 1;
+display: flex;
+flex-direction: column;
+gap: 1.5rem;
+color: #280003 ;
+}
+
+.info-box {
+padding: 1.2rem;
+border-radius: 6px;
+font-size: 0.95rem;
+}
+
+.box-1:hover,
+.box-2:hover,
+.box-3:hover,
+.box-4:hover {
+box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+border-color: #9BC996;  /* optional: Rahmenfarbe beim Hover ändern */
+}
+
+/* ========================= Dropdown / Accordion ========================= */
+.accordion-button {
+  background-color: #EBE4E7;
+  color: #280003;
+  cursor: pointer;
+  padding: 10px 15px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 1rem;
+  font-weight: 400;
+  border-radius: 5px;
+  margin-bottom: 5px;
+  transition: background-color 0.2s ease;
+}
+.accordion-button:hover {
+  background-color: #23748A;
+}
+.accordion-button.active {
+  background-color: #009bb9; /* nach Klick */
+  color: #FEF9FF;
+}
+.accordion-content {
+  display: none;
+  padding: 10px 15px;
+  background-color: #E4E4F2;
+  border-left: 2px solid #216E82;
+  margin-bottom: 10px;
+}
+/* ==================== VIDEOS ========================================*/
+.content-video {
+width: 100%;
+max-width: 800px;
+display: block;
+margin: 30px auto;
+border-radius: 10px;
+}
+
+.video-figure {
+margin: 40px 0;
+}
+
+.video-figure figcaption {
+text-align: center;
+font-weight: bold;
+color:  #216E82; /* dein Lila */
+margin-top: 10px;
+font-size: 0.95rem;
+}
+
+/* ========================= Markdown Content ========================= */
+main ul { padding-left: 20px; }
+main li { margin-bottom: 6px; }
+main img { max-width: 60%; margin: 20px 0; }
+
+
+
