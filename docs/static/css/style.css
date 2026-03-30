@@ -18,18 +18,26 @@ main {
 .logo {
   display: flex;       /* nebeneinander anordnen */
   align-items: center; /* vertikal zentrieren */
-  gap: 80px;           /* Abstand zwischen Logo & Titel */
+  gap: 100px;           /* Abstand zwischen Logo & Titel */
 }
 
 .logo img {
   height: 160px;       /* Logo-Größe */
   width: auto;         /* proportional */
 }
+@font-face {
+  font-family: 'IosevkaBold';
+  src: url('fonts/IosevkaTermSlabNerdFontMono-Bold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
 
+/* Titel-Stil */
 .logo h1 {
+  font-family: 'IosevkaBold', sans-serif;  /* eigener Font zuerst, dann Fallback */
   margin: 0;           /* Abstand oben/unten entfernen */
-  font-size: 2rem;
-  line-height: 1.2; /* gewünschte Größe */
+  font-size: 3rem;
+  line-height: 1.3; /* gewünschte Größe */
 }
 /* ========================= Typografie ========================= */
 h1 {
