@@ -28,7 +28,8 @@ main {
 
 .logo h1 {
   margin: 0;           /* Abstand oben/unten entfernen */
-  font-size: 1.8rem;   /* gewünschte Größe */
+  font-size: 1.8rem;
+  line-height: 1.2; /* gewünschte Größe */
 }
 /* ========================= Typografie ========================= */
 h1 {
