@@ -16,7 +16,7 @@ main {
   margin-top: 30px;
 }
 .logo img {
-  height: 70px;   /* Größe anpassen */
+  height: 100px;   /* Größe anpassen */
   width: auto;
   display: block;
 }
