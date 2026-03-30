@@ -15,12 +15,20 @@ padding: 0 40px;
 main {
   margin-top: 30px;
 }
+.logo {
+  display: flex;       /* nebeneinander anordnen */
+  align-items: center; /* vertikal zentrieren */
+  gap: 20px;           /* Abstand zwischen Logo & Titel */
+}
+
 .logo img {
-  height: 160px;   /* Größe anpassen */
-  align-items: center;   /* vertikal schön ausrichten */
-  gap: 20px;
-  width: auto;
-  display: block;
+  height: 160px;       /* Logo-Größe */
+  width: auto;         /* proportional */
+}
+
+.logo h1 {
+  margin: 0;           /* Abstand oben/unten entfernen */
+  font-size: 1.8rem;   /* gewünschte Größe */
 }
 /* ========================= Typografie ========================= */
 h1 {
