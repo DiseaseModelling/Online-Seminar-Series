@@ -17,6 +17,8 @@ main {
 }
 .logo img {
   height: 160px;   /* Größe anpassen */
+  align-items: center;   /* vertikal schön ausrichten */
+  gap: 20px;
   width: auto;
   display: block;
 }
@@ -24,10 +26,10 @@ main {
 h1 {
   font-family: 'Inter', sans-serif;
   font-weight: 600;
-  color: #009bb9;
+  color:  #00778F;
   margin-top: 1.5em;
 }
-h1 { font-size: 2rem; }
+h1 { font-size: 1.8rem; }
 h2 { font-size: 1.5rem; 
    color: #00778F;
 }
