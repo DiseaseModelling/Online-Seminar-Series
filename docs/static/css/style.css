@@ -16,7 +16,7 @@ main {
   margin-top: 30px;
 }
 .logo img {
-  height: 100px;   /* Größe anpassen */
+  height: 160px;   /* Größe anpassen */
   width: auto;
   display: block;
 }
@@ -46,22 +46,19 @@ a:hover {
 
 /* ========================= Topbar ========================= */
 .topbar {
-  text-align: left;
-  font-size: 1.2rem;
-  margin-bottom: 10px;
-  color:#00778F;
-}
-.topbar a {
-  margin-left: 10px;
-  color:#00778F;
+  display: flex;
+  align-items: center;
+  padding: 20px 0;
 }
 
 /* ========================= Navigation ========================= */
 .main-nav {
-  display: flex;
-  align-items: auto;
+  display: flex; 
+  align-items: center;
   gap: 20px;
-  padding-bottom: 10px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 10px 20px;
   border-bottom: 1px solid #e0e0e0;
   font-size: 0.95rem;
 }
@@ -101,8 +98,8 @@ margin: 50px auto;
 padding: 0 40px;
 
 display: grid;
-grid-template-columns: 280px 1fr 320px;
-gap: 3rem;
+grid-template-columns: 380px 1fr 320px;
+gap: 4rem;
 align-items: start;
 }
 
