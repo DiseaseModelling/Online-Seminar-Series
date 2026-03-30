@@ -37,7 +37,7 @@ main {
   font-family: 'IosevkaBold'; /*sans-serif;  /* eigener Font zuerst, dann Fallback */
   margin: 0;           /* Abstand oben/unten entfernen */
   font-size: 4rem;
-  line-height: 1.6; /* gewünschte Größe */
+  line-height: 1.4; /* gewünschte Größe */
 }
 /* ========================= Typografie ========================= */
 h1 {
