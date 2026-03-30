@@ -15,7 +15,11 @@ padding: 0 40px;
 main {
   margin-top: 30px;
 }
-
+.logo img {
+  height: 50px;   /* Größe anpassen */
+  width: auto;
+  display: block;
+}
 /* ========================= Typografie ========================= */
 h1 {
   font-family: 'Inter', sans-serif;
