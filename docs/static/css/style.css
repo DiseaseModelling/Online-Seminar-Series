@@ -18,7 +18,7 @@ main {
 .logo {
   display: flex;       /* nebeneinander anordnen */
   align-items: center; /* vertikal zentrieren */
-  gap: 20px;           /* Abstand zwischen Logo & Titel */
+  gap: 60px;           /* Abstand zwischen Logo & Titel */
 }
 
 .logo img {
