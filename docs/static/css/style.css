@@ -34,7 +34,7 @@ main {
 
 /* Titel-Stil */
 .logo h1 {
-  font-family: 'IosevkaBold', sans-serif;  /* eigener Font zuerst, dann Fallback */
+  font-family: 'IosevkaBold'; /*sans-serif;  /* eigener Font zuerst, dann Fallback */
   margin: 0;           /* Abstand oben/unten entfernen */
   font-size: 3rem;
   line-height: 1.3; /* gewünschte Größe */
