@@ -9,8 +9,8 @@ resize();
 window.addEventListener("resize", resize);
 
 // ================= CONFIG =================
-const NUM_NODES = 120;
-const MAX_DIST = 170;
+const NUM_NODES = 160;
+const MAX_DIST = 190;
 const GROWTH_SPEED = 0.015;
 
 // ================= NODES =================
