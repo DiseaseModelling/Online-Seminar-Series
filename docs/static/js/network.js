@@ -9,8 +9,8 @@ resize();
 window.addEventListener("resize", resize);
 
 // ================= CONFIG =================
-const NUM_NODES = 90;
-const MAX_DIST = 140;
+const NUM_NODES = 120;
+const MAX_DIST = 170;
 const GROWTH_SPEED = 0.015;
 
 // ================= NODES =================
@@ -21,8 +21,8 @@ for (let i = 0; i < NUM_NODES; i++) {
     x: canvas.width / 2,
     y: canvas.height / 2,
 
-    targetX: Math.random() * canvas.width,
-    targetY: Math.random() * canvas.height,
+    targetX: canvas.width / 2 + (Math.random() - 0.5) * 600,
+	targetY: canvas.height / 2 + (Math.random() - 0.5) * 400,
 
     progress: 0,
     size: Math.random() < 0.15 ? 3 : 1.5 
