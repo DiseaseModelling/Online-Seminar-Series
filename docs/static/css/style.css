@@ -131,7 +131,10 @@ align-items: start;
 }
 
 .main-content {
-/*flex: 3;*/
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(4px);
+  padding: 20px 30px;
+  border-radius: 10px;
 }
 
 .side-info {
