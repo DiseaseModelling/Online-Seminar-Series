@@ -21,8 +21,8 @@ for (let i = 0; i < NUM_NODES; i++) {
     x: canvas.width / 2,
     y: canvas.height / 2,
 
-    targetX: canvas.width / 2 + (Math.random() - 0.5) * 1000,
-	targetY: canvas.height / 2 + (Math.random() - 0.5) * 800,
+    targetX: canvas.width / 2 + (Math.random() - 0.5) * 1200,
+	targetY: canvas.height / 2 + (Math.random() - 0.5) * 750,
 
     progress: 0,
     size: Math.random() < 0.15 ? 3 : 1.5 
