@@ -25,7 +25,7 @@ for (let i = 0; i < NUM_NODES; i++) {
 	targetY: Math.random() * canvas.height,
 
     progress: 0,
-    size: Math.random() < 0.15 ? 3 : 1.5 
+    size: Math.random() < 0.15 ? 2 : 1 
   });
 }
 
