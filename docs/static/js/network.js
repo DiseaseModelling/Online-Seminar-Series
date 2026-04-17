@@ -40,7 +40,7 @@ window.addEventListener("scroll", () => {
 function update() {
   nodes.forEach(node => {
 
-    // smooth build (kein "Schnipsel-Effekt")
+    
     if (node.progress < 1) {
       node.progress += (1 - node.progress) * GROWTH_SPEED;
 
@@ -53,7 +53,7 @@ function update() {
         (node.targetY - canvas.height / 2) * node.progress;
     }
 
-    // leichte organische Bewegung
+    // Bewegung
     else {
       node.x += Math.sin(Date.now() * 0.001 + node.seed) * 0.1;
       node.y += Math.cos(Date.now() * 0.001 + node.seed) * 0.1;
@@ -101,19 +101,18 @@ function draw() {
 
   ctx.save();
 
-  const tilt = scroll * 0.0003;
+  const centerX = canvas.width / 2;
+  const angle = scroll * 0.0015;
 
-// horizontale "3D"-Verzerrung
-  ctx.transform(
-  	1, 0,
-  	Math.sin(tilt) * 0.5, 1,
-  	0, 0
-		);	
-  drawLines();
-  drawNodes();
+  ctx.translate(centerX, 0);
 
-  ctx.restore();
-}
+// „Rotation“ simulieren
+  ctx.scale(Math.cos(angle), 1);
+
+// leichte Perspektive (optional)
+  ctx.transform(1, 0, Math.sin(angle) * 0.2, 1, 0, 0);
+
+  ctx.translate(-centerX, 0);
 
 // ================= LOOP =================
 function animate() {
