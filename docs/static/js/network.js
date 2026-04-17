@@ -101,10 +101,10 @@ function draw() {
 
   ctx.save();
 
-  const centerX = canvas.width / 2;
+  
   const angle = scroll * 0.0015;
 
-  ctx.translate(centerX, 0);
+  
 
 // „Rotation“ simulieren
   ctx.scale(Math.cos(angle), 1);
@@ -112,7 +112,7 @@ function draw() {
 // leichte Perspektive (optional)
   ctx.transform(1, 0, Math.sin(angle) * 0.2, 1, 0, 0);
 
-  ctx.translate(-centerX, 0);
+  
 
 // ================= LOOP =================
 function animate() {
