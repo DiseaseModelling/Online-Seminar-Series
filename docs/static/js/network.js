@@ -101,11 +101,11 @@ function draw() {
 
   ctx.save();
 
-const tilt = scroll * 0.0003; // 
-ctx.transform( 1, 0, Math.sin(tilt) * 0.05, 1, 0, 0 ); 
-drawLines(); 
-drawNodes(); 
-ctx.restore(); }
+  const tilt = scroll * 0.0003; // 
+  ctx.transform( 1, 0, Math.sin(tilt) * 0.05, 1, 0, 0 ); 
+  drawLines(); 
+  drawNodes(); 
+  ctx.restore(); }
 
   
 
