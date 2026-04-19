@@ -101,16 +101,11 @@ function draw() {
 
   ctx.save();
 
-  
-  const angle = scroll * 0.0015;
-
-  
-
-// „Rotation“ simulieren
-  ctx.scale(Math.cos(angle), 1);
-
-// leichte Perspektive (optional)
-  ctx.transform(1, 0, Math.sin(angle) * 0.2, 1, 0, 0);
+const tilt = scroll * 0.0003; // 
+ctx.transform( 1, 0, Math.sin(tilt) * 0.05, 1, 0, 0 ); 
+drawLines(); 
+drawNodes(); 
+ctx.restore(); }
 
   
 
