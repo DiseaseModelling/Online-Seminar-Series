@@ -11,7 +11,7 @@ window.addEventListener("resize", resize);
 // ================= CONFIG =================
 const NUM_NODES = 160;
 const MAX_DIST = 190;
-const GROWTH_SPEED = 0.01;
+const GROWTH_SPEED = 0.005;
 
 // ================= NODES =================
 const nodes = [];
