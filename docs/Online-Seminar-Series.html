@@ -143,7 +143,15 @@ The seminar series is aimed at a broad national and international community and 
             brief.classList.toggle('expanded');
           });
         });
-        
+        // main.js oder inline
+		document.querySelectorAll('.accordion-button').forEach(button => {
+  		button.addEventListener('click', (e) => {
+    		e.stopPropagation(); // ← Wichtig!
+    		button.classList.toggle('active');
+    		const content = button.nextElementSibling;
+    		content.style.display = content.style.display === "block" ? "none" : "block";
+  			});
+		});
         document.querySelectorAll('.info-box').forEach(box => {
           box.addEventListener('click', () => {
             box.classList.toggle('expanded');
