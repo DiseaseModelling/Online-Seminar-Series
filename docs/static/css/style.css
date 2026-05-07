@@ -567,14 +567,17 @@ main img { max-width: 60%; margin: 20px 0; }
 /* ---- Co-Organizer Specific ---- */
 @media screen and (max-width: 1024px) {
   .coorganizer-wrapper {
-    margin: 0; /* Wird vom Parent-Container gesteuert */
+    margin: 0;
   }
   
-  .coorganizer-body {
-    display: flex;
-    flex-direction: column;
-    gap: var(--box-gap);
+  .coorganizer-body .info-box {
+    background: #f9f9f9;
+    padding: var(--box-padding-lg);
+    border-radius: var(--box-radius);
+    border-left: 3px solid var(--primary-teal);
+    margin: 0;
   }
+}
   
   .coorganizer-body .info-box {
     background: #f9f9f9;
