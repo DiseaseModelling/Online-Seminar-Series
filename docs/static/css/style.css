@@ -414,13 +414,15 @@ main img { max-width: 60%; margin: 20px 0; }
    Basiert auf der Original-CSS, nur neue Styles hinzugefügt
    ========================================================================== */
 
-/* ========================= Section-Wrapper (Accordion-Buttons) ========================= */
+/* ============================================
+   Section-Wrapper (Accordion-Buttons) 
+   ============================================ */
 @media screen and (max-width: 1024px) {
   .section-wrapper {
     background: var(--bg-white);
     border: 1px solid #ddd;
     border-radius: 8px;
-    margin-bottom: var(--space-md);
+    margin: var(--space-md) 0;
     overflow: hidden;
   }
   
@@ -428,10 +430,9 @@ main img { max-width: 60%; margin: 20px 0; }
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: var(--space-sm); /* var(--space-md); */
+    padding: var(--space-sm) var(--space-md);
     cursor: pointer;
     background: #f8f8f8;
-    margin: 0;
     min-height: 50px;
   }
   
@@ -446,11 +447,14 @@ main img { max-width: 60%; margin: 20px 0; }
     font-size: 0.8rem;
     color: var(--primary-teal);
     transition: transform 0.2s;
+    flex-shrink: 0;
+    margin-left: var(--space-sm);
   }
   
   .section-content {
     display: none;
     padding: var(--space-md);
+    background: var(--bg-white);
   }
   
   .section-wrapper.expanded .section-content {
@@ -460,8 +464,11 @@ main img { max-width: 60%; margin: 20px 0; }
   .section-wrapper.expanded .toggle-icon {
     transform: rotate(180deg);
   }
+}
+
+
   
-  /* Links in geschlossenem Accordion deaktiviert */
+  /* Links in geschlossenem Accordion deaktiviert
   .section-wrapper:not(.expanded) .section-content a {
     pointer-events: none;
     opacity: 0.5;
@@ -471,7 +478,11 @@ main img { max-width: 60%; margin: 20px 0; }
     pointer-events: auto;
     opacity: 1;
   }
-}
+} */
+
+/* ============================================
+   Co-Organizer Wrapper - NEU
+   ============================================ */
 @media screen and (max-width: 1024px) {
   .coorganizer-wrapper {
     background: var(--bg-white);
@@ -538,92 +549,57 @@ main img { max-width: 60%; margin: 20px 0; }
     box-sizing: border-box;
   }
 }
-/* ========================= Co-Organizer Zusammenfassung ========================= 
-@media screen and (max-width: 1024px) {
-  .section-wrapper[data-section="coorganizer"] .section-content {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-md);
-  }
-  
-  .section-wrapper[data-section="coorganizer"] .info-box {
-    background: #f9f9f9;
-    padding: var(--space-md);
-    border-radius: 8px;
-    border-left: 3px solid var(--primary-teal);
-  }
-  
-  .section-wrapper[data-section="coorganizer"] .info-box strong {
-    display: block;
-    margin-bottom: var(--space-xs);
-  }
-}
+
+
 /* ============================================
-   Info-Boxen einzeln einklappbar
+   Info-Box 
    ============================================ */
 @media screen and (max-width: 1024px) {
-  .info-box:not(.section-wrapper .info-box) {
+  /* Info-Box mit interner Struktur */
+  .info-box.has-toggle {
+    background: var(--bg-white);
     border: 1px solid #ddd;
     border-radius: 8px;
-    margin-bottom: var(--space-md);
+    margin: var(--space-md) 0;
     overflow: hidden;
   }
   
-  .info-box:not(.section-wrapper .info-box) .info-header {
+  .info-box.has-toggle .info-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: var(--space-md);
+    padding: var(--space-sm) var(--space-md);
     cursor: pointer;
     background: #f8f8f8;
     min-height: 50px;
   }
   
-  .info-box:not(.section-wrapper .info-box) .info-header h3 {
+  .info-box.has-toggle .info-header h3 {
     margin: 0;
     font-size: 1rem;
     color: var(--primary-teal);
   }
   
-  .info-box:not(.section-wrapper .info-box) .info-body {
+  .info-box.has-toggle .info-header .toggle-icon {
+    font-size: 0.8rem;
+    color: var(--primary-teal);
+    transition: transform 0.2s;
+    flex-shrink: 0;
+    margin-left: var(--space-sm);
+  }
+  
+  .info-box.has-toggle .info-body {
     display: none;
     padding: var(--space-md);
     background: var(--bg-white);
   }
   
-  .info-box:not(.section-wrapper .info-box).expanded .info-body {
+  .info-box.has-toggle.expanded .info-body {
     display: block;
   }
-}
-/* Info-Boxen einzeln einklappbar (nur wenn NICHT in .section-wrapper)
-@media screen and (max-width: 1024px) {
-  .info-box:not(.section-wrapper .info-box) {
-    max-height: 150px;
-    overflow: hidden;
-    position: relative;
-    cursor: pointer;
-  }
   
-  .info-box:not(.section-wrapper .info-box)::after {
-    content: "more ▼";
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    padding: var(--space-sm);
-    background: linear-gradient(transparent, var(--bg-white));
-    text-align: center;
-    color: var(--primary-teal);
-    font-weight: 600;
-    font-size: 0.85rem;
-  }
-  
-  .info-box:not(.section-wrapper .info-box).expanded {
-    max-height: none;
-  }
-  
-  .info-box:not(.section-wrapper .info-box).expanded::after {
-    display: none;
+  .info-box.has-toggle.expanded .toggle-icon {
+    transform: rotate(180deg);
   }
 }
 /* ========================= Main Content - Section-Wrapper Integration ========================= */
