@@ -153,7 +153,7 @@
 </div> 
 
 
-<!-- Accordion Script - Original behalten + Einklappbare Bereiche -->
+<!-- Accordion Script -->
 <script>
 
 // ============================================
@@ -175,11 +175,21 @@ if (window.innerWidth <= 1024) {
     });
   });
 }
-document.querySelectorAll('.info-box').forEach(box => {
-  box.addEventListener('click', () => {
-    box.classList.toggle('expanded');
+
+// ============================================
+// Info-Boxen einklappbar (nur einzelne Boxen, NICHT in Section-Wrapper)
+// ============================================
+if (window.innerWidth <= 1024) {
+  document.querySelectorAll('.info-box:not(.section-wrapper .info-box)').forEach(box => {
+    box.addEventListener('click', (e) => {
+      // Links nicht als Toggle behandeln
+      if (e.target.tagName === 'A' || e.target.closest('a')) return;
+      
+      box.classList.toggle('expanded');
+    });
   });
-});
+}
+
 // ============================================
 // Seminar-Accordions
 // ============================================
@@ -210,8 +220,8 @@ document.querySelectorAll('.accordion-button').forEach(button => {
     }
   });
 });
-}
-    </script>
+
+</script>
 </div>
 <canvas id="network-bg"></canvas>
       
