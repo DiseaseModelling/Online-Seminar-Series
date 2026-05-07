@@ -492,36 +492,36 @@ main img { max-width: 60%; margin: 20px 0; }
     margin-bottom: var(--space-xs);
   }
 }
-/* =============Einklappbare Bereiche ============= */
-/* Info-Boxen einklappbar */
-.info-box {
-max-height: 150px;
-overflow: hidden;
-position: relative;
-cursor: pointer;
-}
-
-.info-box::after {
-content: "more ▼";
-position: absolute;
-bottom: 0;
-left: 0;
-right: 0;
-padding: var(--space-sm);
-background: linear-gradient(transparent, var(--bg-white));
-text-align: center;
-color: var(--primary-teal);
-font-weight: 600;
-font-size: 0.85rem;
-}
-
-.info-box.expanded {
-max-height: none;
-}
-
-.info-box.expanded::after {
-display: none;
-}
+/* Info-Boxen einzeln einklappbar (nur wenn NICHT in .section-wrapper) */
+@media screen and (max-width: 1024px) {
+  .info-box:not(.section-wrapper .info-box) {
+    max-height: 150px;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+  }
+  
+  .info-box:not(.section-wrapper .info-box)::after {
+    content: "more ▼";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: var(--space-sm);
+    background: linear-gradient(transparent, var(--bg-white));
+    text-align: center;
+    color: var(--primary-teal);
+    font-weight: 600;
+    font-size: 0.85rem;
+  }
+  
+  .info-box:not(.section-wrapper .info-box).expanded {
+    max-height: none;
+  }
+  
+  .info-box:not(.section-wrapper .info-box).expanded::after {
+    display: none;
+  }
 }
 /* ========================= Main Content - Section-Wrapper Integration ========================= */
 @media screen and (max-width: 1024px) {
