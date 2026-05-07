@@ -759,27 +759,13 @@
 
 </div> 
 
-<!-- Accordion Script -->
+<!-- Accordion Script-->
 <script>
-// Accordion Script (aktualisiert)
 document.querySelectorAll('.accordion-button').forEach(button => {
   button.addEventListener('click', () => {
+    button.classList.toggle('active');
     const content = button.nextElementSibling;
-    const isOpen = content.classList.contains('show');
-    
-    // Alle schließen
-    document.querySelectorAll('.accordion-content').forEach(c => {
-      c.classList.remove('show');
-    });
-    document.querySelectorAll('.accordion-button').forEach(b => {
-      b.classList.remove('active');
-    });
-    
-    // Wenn es geschlossen war, öffnen
-    if (!isOpen) {
-      button.classList.add('active');
-      content.classList.add('show');
-    }
+    content.style.display = content.style.display === "block" ? "none" : "block";
   });
 });
 </script>
