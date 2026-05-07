@@ -522,7 +522,7 @@ main img { max-width: 60%; margin: 20px 0; }
 
 /* ============================================
    Main Content - volle Breite
-   ============================================ 
+   ============================================ */
 @media screen and (max-width: 1024px) {
   .main-content {
     background: var(--bg-white);
