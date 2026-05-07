@@ -451,9 +451,8 @@ main img { max-width: 60%; margin: 20px 0; }
     margin-bottom: var(--space-sm);
   }
   
-  /* ============= NEU: Einklappbare Bereiche ============= */
+  /* =============Einklappbare Bereiche ============= */
   
-  /* Brief - nur Teaser zeigen */
   .brief {
     background: linear-gradient(135deg, #EBE4E7, #E4E4F2);
     border-left: 4px solid var(--primary-teal);
@@ -482,7 +481,7 @@ main img { max-width: 60%; margin: 20px 0; }
   
   /* Fade + "Mehr lesen" Button */
   .brief::after {
-    content: "Mehr lesen ▼";
+    content: "read more ▼";
     position: absolute;
     bottom: 0;
     left: 0;
@@ -505,7 +504,7 @@ main img { max-width: 60%; margin: 20px 0; }
   }
   
   .brief.expanded::after {
-    content: "Weniger ▲";
+    content: "show less ▲";
     background: linear-gradient(transparent, #EBE4E7);
   }
   
