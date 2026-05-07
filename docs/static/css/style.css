@@ -428,10 +428,11 @@ main img { max-width: 60%; margin: 20px 0; }
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: var(--space-sm) var(--space-md);
+    padding: var(--space-sm); /* var(--space-md); */
     cursor: pointer;
     background: #f8f8f8;
     margin: 0;
+    min-height: 50px;
   }
   
   .section-header h2,
@@ -471,8 +472,73 @@ main img { max-width: 60%; margin: 20px 0; }
     opacity: 1;
   }
 }
+@media screen and (max-width: 1024px) {
+  .coorganizer-wrapper {
+    background: var(--bg-white);
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin-bottom: var(--space-md);
+    overflow: hidden;
+  }
+  
+  .coorganizer-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--space-md);
+    cursor: pointer;
+    background: #f8f8f8;
+    min-height: 50px;
+  }
+  
+  .coorganizer-header h3 {
+    margin: 0;
+    font-size: 1rem;
+    color: var(--primary-teal);
+  }
+  
+  .coorganizer-body {
+    display: none;
+    padding: var(--space-md);
+    background: var(--bg-white);
+  }
+  
+  .coorganizer-wrapper.expanded .coorganizer-body {
+    display: block;
+  }
+  
+  .coorganizer-body .info-box {
+    background: #f9f9f9;
+    padding: var(--space-md);
+    border-radius: 8px;
+    border-left: 3px solid var(--primary-teal);
+    margin-bottom: var(--space-md);
+  }
+  
+  .coorganizer-body .info-box:last-child {
+    margin-bottom: 0;
+  }
+}
 
-/* ========================= Co-Organizer Zusammenfassung ========================= */
+/* ============================================
+   Main Content - volle Breite
+   ============================================ 
+@media screen and (max-width: 1024px) {
+  .main-content {
+    background: var(--bg-white);
+    padding: var(--space-md);
+    border-radius: 0;
+    box-shadow: none;
+    margin: 0;
+    width: 100%;
+  }
+  
+  .main-content .section-wrapper {
+    width: 100%;
+    box-sizing: border-box;
+  }
+}
+/* ========================= Co-Organizer Zusammenfassung ========================= 
 @media screen and (max-width: 1024px) {
   .section-wrapper[data-section="coorganizer"] .section-content {
     display: flex;
@@ -492,7 +558,44 @@ main img { max-width: 60%; margin: 20px 0; }
     margin-bottom: var(--space-xs);
   }
 }
-/* Info-Boxen einzeln einklappbar (nur wenn NICHT in .section-wrapper) */
+/* ============================================
+   Info-Boxen einzeln einklappbar
+   ============================================ */
+@media screen and (max-width: 1024px) {
+  .info-box:not(.section-wrapper .info-box) {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin-bottom: var(--space-md);
+    overflow: hidden;
+  }
+  
+  .info-box:not(.section-wrapper .info-box) .info-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--space-md);
+    cursor: pointer;
+    background: #f8f8f8;
+    min-height: 50px;
+  }
+  
+  .info-box:not(.section-wrapper .info-box) .info-header h3 {
+    margin: 0;
+    font-size: 1rem;
+    color: var(--primary-teal);
+  }
+  
+  .info-box:not(.section-wrapper .info-box) .info-body {
+    display: none;
+    padding: var(--space-md);
+    background: var(--bg-white);
+  }
+  
+  .info-box:not(.section-wrapper .info-box).expanded .info-body {
+    display: block;
+  }
+}
+/* Info-Boxen einzeln einklappbar (nur wenn NICHT in .section-wrapper)
 @media screen and (max-width: 1024px) {
   .info-box:not(.section-wrapper .info-box) {
     max-height: 150px;
