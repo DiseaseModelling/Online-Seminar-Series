@@ -21,7 +21,7 @@ const nodes = [];
 for (let i = 0; i < NUM_NODES; i++) {
   nodes.push({
     x: canvas.width / 2,
-    y: canvas.height , // /2
+    y: canvas.height /2,
 
     targetX: Math.random() * canvas.width,
 	targetY: Math.random() * canvas.height,
