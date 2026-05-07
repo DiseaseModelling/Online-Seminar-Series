@@ -135,16 +135,22 @@ The seminar series is aimed at a broad national and international community and 
 </div> 
 
 
-<!-- Accordion Script - Original behalten -->
+<!-- Accordion Script - Original behalten + Einklappbare Bereiche -->
 <script>
-document.querySelectorAll('.accordion-button').forEach(button => {
-  button.addEventListener('click', () => {
-    button.classList.toggle('active');
-    const content = button.nextElementSibling;
-    content.style.display = content.style.display === "block" ? "none" : "block";
-  });
-});
-</script>
+      if (window.innerWidth <= 1024) {
+        document.querySelectorAll('.brief').forEach(brief => {
+          brief.addEventListener('click', () => {
+            brief.classList.toggle('expanded');
+          });
+        });
+        
+        document.querySelectorAll('.info-box').forEach(box => {
+          box.addEventListener('click', () => {
+            box.classList.toggle('expanded');
+          });
+        });
+      }
+    </script>
 </div>
 <canvas id="network-bg"></canvas>
       
