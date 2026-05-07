@@ -2,8 +2,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Previous-Seminars</title>
     <link rel="stylesheet" href="static/css/style.css">
+	<!-- Mobile Styles -->
+	<link rel="stylesheet" href="static/css/mobile.css" media="screen and (max-width: 1024px)">
 </head>
 
 <body>
@@ -739,11 +742,25 @@
 
 <!-- Accordion Script -->
 <script>
+// Accordion Script (aktualisiert)
 document.querySelectorAll('.accordion-button').forEach(button => {
   button.addEventListener('click', () => {
-    button.classList.toggle('active');
     const content = button.nextElementSibling;
-    content.style.display = content.style.display === "block" ? "none" : "block";
+    const isOpen = content.classList.contains('show');
+    
+    // Alle schließen
+    document.querySelectorAll('.accordion-content').forEach(c => {
+      c.classList.remove('show');
+    });
+    document.querySelectorAll('.accordion-button').forEach(b => {
+      b.classList.remove('active');
+    });
+    
+    // Wenn es geschlossen war, öffnen
+    if (!isOpen) {
+      button.classList.add('active');
+      content.classList.add('show');
+    }
   });
 });
 </script>
