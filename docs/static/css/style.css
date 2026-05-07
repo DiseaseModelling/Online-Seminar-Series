@@ -221,6 +221,7 @@ main img { max-width: 60%; margin: 20px 0; }
 
 /* ========================= CSS Custom Properties ========================= */
 :root {
+  /* Farben */
   --primary-dark: #FFFFFF;
   --primary-teal: #00778F;
   --accent-green: #9BC996;
@@ -228,16 +229,26 @@ main img { max-width: 60%; margin: 20px 0; }
   --accent-blue: #009bb9;
   --bg-white: #FFFFFF;
   --bg-light: rgba(255, 255, 255, 0.9);
+  
+  /* Spacing */
   --space-xs: 0.5rem;
   --space-sm: 1rem;
   --space-md: 1.5rem;
   --space-lg: 2rem;
+  
+  /* Touch Target */
   --touch-target: 44px;
-  /* Unified Collapsible Variables */
-  --collapsible-radius: 8px;
-  --collapsible-border: 1px solid #ddd;
-  --collapsible-header-bg: #f8f8f8;
-  --collapsible-header-min-height: 50px;
+  
+  /* ===== UNIFIED BOX SYSTEM ===== */
+  /* Einheitliche Werte für ALLE Boxen */
+  --box-gap: 1rem;                    /* Abstand zwischen Boxen */
+  --box-padding: 1rem;                /* Innenabstand */
+  --box-padding-lg: 1.5rem;           /* Größerer Innenabstand für Content */
+  --box-radius: 8px;                  /* Rundung */
+  --box-header-height: 50px;          /* Header Höhe (Touch-friendly) */
+  --box-border: 1px solid #ddd;       /* Border */
+  --box-header-bg: #f8f8f8;           /* Header Hintergrund */
+  --box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
 /* ========================= Grundlegendes Mobile Reset ========================= */
@@ -259,7 +270,6 @@ main img { max-width: 60%; margin: 20px 0; }
     overflow-x: hidden;
   }
   
-  /* Prevent horizontal overflow globally */
   body,
   .wrapper,
   .topbar,
@@ -302,16 +312,16 @@ main img { max-width: 60%; margin: 20px 0; }
   }
 }
 
-/* ========================= Navigation - Fixed Width Issue ========================= */
+/* ========================= Navigation ========================= */
 @media screen and (max-width: 1024px) {
   .main-nav {
     position: relative;
     display: flex;
     flex-wrap: nowrap;
-    align-items: stretch; /* Changed from center */
+    align-items: stretch;
     justify-content: flex-start;
-    gap: 0.25rem; /* Reduced gap */
-    padding: var(--space-xs) var(--space-sm); /* Reduced padding */
+    gap: 0.25rem;
+    padding: var(--space-xs) var(--space-sm);
     background: var(--bg-white);
     border-bottom: 2px solid var(--primary-teal);
     overflow-x: auto;
@@ -319,7 +329,7 @@ main img { max-width: 60%; margin: 20px 0; }
     scrollbar-width: none;
     -ms-overflow-style: none;
     width: 100%;
-    max-width: 100%; /* Critical: prevent overflow */
+    max-width: 100%;
   }
   
   .main-nav::-webkit-scrollbar {
@@ -328,8 +338,8 @@ main img { max-width: 60%; margin: 20px 0; }
   
   .nav-item:not(.subscribe) {
     flex-shrink: 0;
-    padding: 8px 10px; /* Reduced padding */
-    font-size: 0.8rem; /* Smaller font */
+    padding: 8px 10px;
+    font-size: 0.8rem;
     white-space: nowrap;
     border-bottom: 2px solid transparent;
     transition: border-color 0.2s ease, color 0.2s ease;
@@ -347,8 +357,8 @@ main img { max-width: 60%; margin: 20px 0; }
   .subscribe {
     flex-shrink: 0;
     margin-left: auto;
-    padding: 8px 12px; /* Reduced padding */
-    font-size: 0.8rem; /* Smaller font */
+    padding: 8px 12px;
+    font-size: 0.8rem;
     white-space: nowrap;
     min-height: var(--touch-target);
     display: inline-flex;
@@ -357,46 +367,59 @@ main img { max-width: 60%; margin: 20px 0; }
   }
 }
 
-/* ========================= Page Layout - Mobile ========================= */
+/* ========================= Page Layout ========================= */
 @media screen and (max-width: 1024px) {
   .page-layout {
     display: flex;
     flex-direction: column;
-    gap: var(--space-md);
+    gap: var(--box-gap);
     padding: var(--space-sm);
     margin: var(--space-sm) auto;
     max-width: 100%;
     width: 100%;
   }
   
+  .left-info,
+  .main-content,
+  .side-info {
+    width: 100%;
+  }
+  
   .left-info {
     order: 1;
-    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: var(--box-gap);
   }
   
   .main-content {
     order: 2;
     background: var(--bg-white);
-    padding: var(--space-sm);
-    border-radius: var(--collapsible-radius);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-    width: 100%;
+    padding: var(--box-padding);
+    border-radius: var(--box-radius);
+    box-shadow: var(--box-shadow);
+    display: flex;
+    flex-direction: column;
+    gap: var(--box-gap);
   }
   
   .side-info {
     order: 3;
-    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: var(--box-gap);
   }
 }
 
-/* ========================= Info-Boxen - Mobile ========================= */
+/* ========================= Info-Boxen (nicht collapsible) ========================= */
 @media screen and (max-width: 1024px) {
   .info-box {
-    padding: var(--space-md);
-    margin-bottom: 0;
-    border-radius: var(--collapsible-radius);
-    font-size: 0.95rem;
-    line-height: 1.6;
+    padding: var(--box-padding-lg);
+    border-radius: var(--box-radius);
+    border: var(--box-border);
+    background: var(--bg-light);
+    backdrop-filter: blur(8px);
+    box-shadow: var(--box-shadow);
     width: 100%;
   }
   
@@ -405,27 +428,34 @@ main img { max-width: 60%; margin: 20px 0; }
     margin-bottom: var(--space-xs);
   }
   
+  .info-box p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: var(--space-xs);
+  }
+  
+  .info-box p:last-child {
+    margin-bottom: 0;
+  }
+  
   .box-1,
   .box-2,
   .box-3,
   .box-4 {
-    background: var(--bg-light);
-    backdrop-filter: blur(8px);
     border: 1px solid rgba(0, 119, 143, 0.2);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
   }
 }
 
-/* ========================= Main Content - Mobile ========================= */
+/* ========================= Main Content Typography ========================= */
 @media screen and (max-width: 1024px) {
   .main-content h2 {
     font-size: 1.1rem;
-    margin: var(--space-md) 0 var(--space-xs);
+    margin: 0 0 var(--space-xs) 0;
   }
   
   .main-content h3 {
     font-size: 1rem;
-    margin: var(--space-md) 0 var(--space-xs);
+    margin: 0 0 var(--space-xs) 0;
   }
   
   .main-content p {
@@ -433,38 +463,52 @@ main img { max-width: 60%; margin: 20px 0; }
     line-height: 1.6;
     margin-bottom: var(--space-xs);
   }
+  
+  .main-content p:last-child {
+    margin-bottom: 0;
+  }
 }
 
-/* ========================= UNIFIED COLLABSIBLE BASE STYLES ========================= */
+/* ============================================================================
+   UNIFIED COLLABSIBLE SYSTEM
+   Alle ausklappbaren Elemente teilen dieselben Styles
+   ============================================================================ */
 @media screen and (max-width: 1024px) {
-  /* Base collapsible structure - applied to all expandable elements */
+  /* ---- Basis-Collapsible Styles ---- */
   .section-wrapper,
   .coorganizer-wrapper,
-  .info-box.collapsible {
-    border: var(--collapsible-border);
-    border-radius: var(--collapsible-radius);
-    margin: var(--space-md) 0;
-    overflow: hidden;
+  .info-box.collapsible,
+  .accordion {
+    border: var(--box-border);
+    border-radius: var(--box-radius);
     width: 100%;
     max-width: 100%;
     background: var(--bg-white);
   }
   
-  /* Unified header styles */
+  /* ---- Collapsible Header (Section, Co-Organizer, Info-Box) ---- */
   .section-header,
   .coorganizer-header,
   .info-box.collapsible .box-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: var(--space-sm) var(--space-md);
+    padding: var(--box-padding);
     cursor: pointer;
-    background: var(--collapsible-header-bg);
-    min-height: var(--collapsible-header-min-height);
+    background: var(--box-header-bg);
+    min-height: var(--box-header-height);
     width: 100%;
+    border-radius: var(--box-radius) var(--box-radius) 0 0;
+    border-bottom: 1px solid transparent;
   }
   
-  /* Unified header text */
+  .section-header:hover,
+  .coorganizer-header:hover,
+  .info-box.collapsible .box-header:hover {
+    background: #f0f0f0;
+  }
+  
+  /* ---- Collapsible Header Text ---- */
   .section-header h2,
   .section-header h3,
   .coorganizer-header h3,
@@ -473,9 +517,10 @@ main img { max-width: 60%; margin: 20px 0; }
     font-size: 1rem;
     color: var(--primary-teal);
     flex: 1;
+    line-height: 1.4;
   }
   
-  /* Unified toggle icon */
+  /* ---- Toggle Icon ---- */
   .section-header .toggle-icon,
   .coorganizer-header .toggle-icon,
   .info-box.collapsible .box-header .toggle-icon {
@@ -486,24 +531,32 @@ main img { max-width: 60%; margin: 20px 0; }
     transition: transform 0.2s ease;
   }
   
-  /* Unified content area */
+  /* ---- Collapsible Content Area ---- */
   .section-content,
   .coorganizer-body,
   .info-box.collapsible .box-content {
     display: none;
-    padding: var(--space-md);
+    padding: var(--box-padding-lg);
     background: var(--bg-white);
     width: 100%;
+    border-radius: 0 0 var(--box-radius) var(--box-radius);
   }
   
-  /* Expanded state */
+  /* ---- Expanded State ---- */
+  .section-wrapper.expanded .section-header,
+  .coorganizer-wrapper.expanded .coorganizer-header,
+  .info-box.collapsible.expanded .box-header {
+    border-bottom: 1px solid #ddd;
+    border-radius: var(--box-radius) var(--box-radius) 0 0;
+  }
+  
   .section-wrapper.expanded .section-content,
   .coorganizer-wrapper.expanded .coorganizer-body,
   .info-box.collapsible.expanded .box-content {
     display: block;
   }
   
-  /* Rotated icon when expanded */
+  /* ---- Rotated Icon ---- */
   .section-wrapper.expanded .section-header .toggle-icon,
   .coorganizer-wrapper.expanded .coorganizer-header .toggle-icon,
   .info-box.collapsible.expanded .box-header .toggle-icon {
@@ -511,41 +564,33 @@ main img { max-width: 60%; margin: 20px 0; }
   }
 }
 
-/* ========================= Section-Wrapper (Accordion-Buttons) ========================= */
+/* ---- Co-Organizer Specific ---- */
 @media screen and (max-width: 1024px) {
-  .main-content .section-wrapper {
-    margin: var(--space-sm) 0;
+  .coorganizer-wrapper {
+    margin: 0; /* Wird vom Parent-Container gesteuert */
   }
   
-  .main-content .section-wrapper h2 {
-    font-size: 1rem;
-    margin: 0;
+  .coorganizer-body {
+    display: flex;
+    flex-direction: column;
+    gap: var(--box-gap);
   }
   
-  .main-content .section-wrapper h3 {
-    font-size: 1rem;
-    margin: 0;
-  }
-}
-
-/* ========================= Co-Organizer Wrapper ========================= */
-@media screen and (max-width: 1024px) {
   .coorganizer-body .info-box {
     background: #f9f9f9;
-    padding: var(--space-md);
-    border-radius: var(--collapsible-radius);
+    padding: var(--box-padding-lg);
+    border-radius: var(--box-radius);
     border-left: 3px solid var(--primary-teal);
-    margin-bottom: var(--space-sm);
-    width: 100%;
-  }
-  
-  .coorganizer-body .info-box:last-child {
-    margin-bottom: 0;
+    margin: 0; /* Wird vom Parent-Container gesteuert */
   }
 }
 
-/* ========================= Info-Box Collapsible ========================= */
+/* ---- Info-Box Collapsible Content ---- */
 @media screen and (max-width: 1024px) {
+  .info-box.collapsible {
+    margin: 0; /* Wird vom Parent-Container gesteuert */
+  }
+  
   .info-box.collapsible .box-content p,
   .info-box.collapsible .box-content ul,
   .info-box.collapsible .box-content ol {
@@ -554,36 +599,53 @@ main img { max-width: 60%; margin: 20px 0; }
     line-height: 1.6;
   }
   
+  .info-box.collapsible .box-content p:last-child,
+  .info-box.collapsible .box-content ul:last-child,
+  .info-box.collapsible .box-content ol:last-child {
+    margin-bottom: 0;
+  }
+  
   .info-box.collapsible .box-content ul,
   .info-box.collapsible .box-content ol {
     padding-left: var(--space-md);
   }
 }
 
-/* ========================= Accordion (Seminare) - Touch-Optimiert ========================= */
+/* ---- Section Wrapper in Main Content ---- */
+@media screen and (max-width: 1024px) {
+  .main-content .section-wrapper {
+    margin: 0; /* Wird vom Parent-Container gesteuert */
+  }
+  
+  .main-content .section-wrapper h2,
+  .main-content .section-wrapper h3 {
+    font-size: 1rem;
+    margin: 0;
+  }
+}
+
+/* ============================================================================
+   ACCORDION SYSTEM
+   ============================================================================ */
 @media screen and (max-width: 1024px) {
   .accordion {
-    margin-bottom: var(--space-sm);
-    position: relative;
-    width: 100%;
-    max-width: 100%;
+    margin: 0; /* Wird vom Parent-Container gesteuert */
   }
   
   .accordion-button {
     position: relative;
     min-height: var(--touch-target);
-    padding: var(--space-sm) 50px var(--space-sm) var(--space-sm);
+    padding: var(--box-padding) 50px var(--box-padding) var(--box-padding);
     font-size: 0.95rem;
     line-height: 1.5;
-    border-radius: var(--collapsible-radius);
+    border-radius: var(--box-radius);
     border: none;
     border-left: 4px solid var(--primary-teal);
-    background: #f8f8f8;
+    background: var(--box-header-bg);
     cursor: pointer;
     -webkit-tap-highlight-color: rgba(0, 155, 185, 0.2);
     text-align: left;
     width: 100%;
-    max-width: 100%;
     color: #280003;
     display: flex;
     align-items: center;
@@ -596,7 +658,7 @@ main img { max-width: 60%; margin: 20px 0; }
   .accordion-button::after {
     content: '▼';
     position: absolute;
-    right: var(--space-md);
+    right: var(--box-padding-lg);
     top: 50%;
     transform: translateY(-50%);
     font-size: 0.8rem;
@@ -612,19 +674,18 @@ main img { max-width: 60%; margin: 20px 0; }
     background: var(--accent-blue);
     color: white;
     border-left-color: var(--accent-green);
+    border-radius: var(--box-radius) var(--box-radius) 0 0;
   }
   
   .accordion-content {
-    padding: var(--space-md);
+    padding: var(--box-padding-lg);
     background: white;
-    border-radius: 0 0 var(--collapsible-radius) var(--collapsible-radius);
+    border-radius: 0 0 var(--box-radius) var(--box-radius);
     border-left: 4px solid var(--accent-green);
-    margin-bottom: var(--space-sm);
     font-size: 0.95rem;
     line-height: 1.7;
     display: none;
     width: 100%;
-    max-width: 100%;
   }
   
   .accordion-content.show {
@@ -635,12 +696,24 @@ main img { max-width: 60%; margin: 20px 0; }
     margin-bottom: var(--space-xs);
   }
   
+  .accordion-content p:last-child {
+    margin-bottom: 0;
+  }
+  
   .accordion-content a {
     color: var(--primary-teal);
   }
+  
+  /* Accordion Wrapper für gruppierte Accordions */
+  .accordion-group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--box-gap);
+    width: 100%;
+  }
 }
 
-/* ========================= Canvas - Mobile Optimiert ========================= */
+/* ========================= Canvas ========================= */
 @media screen and (max-width: 1024px) {
   #network-bg {
     position: fixed;
@@ -654,7 +727,7 @@ main img { max-width: 60%; margin: 20px 0; }
   }
 }
 
-/* ========================= Links - Touch-Optimiert ========================= */
+/* ========================= Links ========================= */
 @media screen and (max-width: 1024px) {
   a {
     min-height: var(--touch-target);
@@ -674,12 +747,12 @@ main img { max-width: 60%; margin: 20px 0; }
   }
 }
 
-/* ========================= Videos - Mobile ========================= */
+/* ========================= Videos ========================= */
 @media screen and (max-width: 1024px) {
   .content-video {
     width: 100%;
     max-width: 100%;
-    border-radius: var(--collapsible-radius);
+    border-radius: var(--box-radius);
     margin: var(--space-md) 0;
   }
   
@@ -700,8 +773,8 @@ main img { max-width: 60%; margin: 20px 0; }
     --primary-dark: #F5F0F2;
     --bg-white: #1E1E1E;
     --bg-light: rgba(40, 40, 40, 0.95);
-    --collapsible-border: 1px solid #404040;
-    --collapsible-header-bg: #252525;
+    --box-border: 1px solid #404040;
+    --box-header-bg: #252525;
   }
   
   body {
@@ -714,37 +787,16 @@ main img { max-width: 60%; margin: 20px 0; }
     color: #E0E0E0;
   }
   
-  .section-wrapper,
-  .coorganizer-wrapper,
-  .info-box.collapsible {
-    border-color: #404040;
-  }
-  
-  .section-header,
-  .coorganizer-header,
-  .info-box.collapsible .box-header {
-    background: #252525;
-  }
-  
-  .section-content,
-  .coorganizer-body,
-  .info-box.collapsible .box-content {
-    background: #1E1E1E;
-  }
-  
-  .info-box {
-    background: #252525;
-    border-color: #404040;
-    color: #E0E0E0;
+  .section-header:hover,
+  .coorganizer-header:hover,
+  .info-box.collapsible .box-header:hover,
+  .accordion-button:hover {
+    background: #333;
   }
   
   .accordion-button {
     background: #2D2D2D;
     color: #E0E0E0;
-  }
-  
-  .accordion-button:hover {
-    background: #3D3D3D;
   }
   
   .accordion-content {
@@ -774,4 +826,5 @@ main img { max-width: 60%; margin: 20px 0; }
     animation-duration: 0.01ms !important;
     transition-duration: 0.01ms !important;
   }
+}
 }
