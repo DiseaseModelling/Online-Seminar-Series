@@ -394,8 +394,8 @@ main img { max-width: 60%; margin: 20px 0; }
     margin-top: var(--space-xs);
   }
   
-  .box-1,
   .box-2,
+  .box-1,
   .box-3,
   .box-4 {
     background: var(--bg-light);
@@ -404,8 +404,8 @@ main img { max-width: 60%; margin: 20px 0; }
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
   }
   
-  .box-1:active,
   .box-2:active,
+  .box-1:active,
   .box-3:active,
   .box-4:active {
     transform: scale(0.98);
