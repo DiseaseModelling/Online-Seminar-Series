@@ -217,12 +217,10 @@ main img { max-width: 60%; margin: 20px 0; }
 
 /* ==========================================================================
    MOBILE STYLES - Modern, Touch-Friendly, Responsive
-   Einbindung: <link rel="stylesheet" href="static/css/mobile.css" media="screen and (max-width: 768px)">
    ========================================================================== */
 
 /* ========================= CSS Custom Properties ========================= */
 :root {
-  /* Farben */
   --primary-dark: #280003;
   --primary-teal: #00778F;
   --accent-green: #9BC996;
@@ -230,20 +228,15 @@ main img { max-width: 60%; margin: 20px 0; }
   --accent-blue: #009bb9;
   --bg-white: #FFFFFF;
   --bg-light: rgba(255, 255, 255, 0.9);
-  
-  /* Abstände */
   --space-xs: 0.5rem;
   --space-sm: 1rem;
   --space-md: 1.5rem;
   --space-lg: 2rem;
-  --space-xl: 3rem;
-  
-  /* Touch-Ziele (min. 44px für Barrierefreiheit) */
   --touch-target: 44px;
 }
 
 /* ========================= Grundlegendes Mobile Reset ========================= */
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1024px) {
   *,
   *::before,
   *::after {
@@ -251,7 +244,7 @@ main img { max-width: 60%; margin: 20px 0; }
   }
   
   html {
-    font-size: 16px; /*Basis für Rem-Einheiten*/
+    font-size: 16px;
     -webkit-text-size-adjust: 100%;
   }
   
@@ -260,15 +253,10 @@ main img { max-width: 60%; margin: 20px 0; }
     line-height: 1.6;
     overflow-x: hidden;
   }
-  
-  /* Canvas Background deaktivieren für Performance */
-  #network-bg {
-    display: none;
-  }
 }
 
 /* ========================= Wrapper & Topbar ========================= */
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1024px) {
   .wrapper {
     padding: 0 var(--space-sm);
     max-width: 100%;
@@ -278,7 +266,6 @@ main img { max-width: 60%; margin: 20px 0; }
     padding: var(--space-sm) 0;
   }
   
-  /* Logo-Bereich: Vertikal stapeln */
   .logo {
     flex-direction: column;
     align-items: flex-start;
@@ -287,7 +274,7 @@ main img { max-width: 60%; margin: 20px 0; }
   }
   
   .logo img {
-    height: 80px; /*Verkleinerte Logo-Größe für mobile*/
+    height: 80px;
     width: auto;
   }
   
@@ -299,13 +286,15 @@ main img { max-width: 60%; margin: 20px 0; }
   }
 }
 
-/* ========================= Navigation - Mobile Optimiert ========================= */
-@media screen and (max-width: 768px) {
+/* ========================= Navigation - Fixed Alignment ========================= */
+@media screen and (max-width: 1024px) {
   .main-nav {
     position: relative;
     display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-xs);
+    flex-wrap: nowrap;           /* NICHT umbrechen */
+    align-items: center;         /* Vertikal zentriert */
+    justify-content: flex-start; /* Links beginnen */
+    gap: 0.5rem;                 /* Kleinerer Abstand */
     padding: var(--space-sm);
     background: var(--bg-white);
     border-bottom: 2px solid var(--primary-teal);
@@ -319,28 +308,68 @@ main img { max-width: 60%; margin: 20px 0; }
     display: none;
   }
   
+  /* Navigation Items - alle gleichmäßig */
   .nav-item:not(.subscribe) {
-    flex-shrink: 0;
-    padding: var(--space-xs) var(--space-sm);
-    font-size: 0.9rem;
+    flex-shrink: 0;              /* Nicht schrumpfen */
+    padding: 10px 12px;
+    font-size: 0.85rem;          /* Kleinere Schrift */
     white-space: nowrap;
     border-bottom: 2px solid transparent;
     transition: border-color 0.2s ease, color 0.2s ease;
   }
   
-  .nav-item:not(.subscribe):active {
+  .nav-item:not(.subscribe):active,
+  .nav-item:not(.subscribe).active {
     border-bottom-color: var(--accent-green);
+    color: var(--accent-green);
   }
   
+  /* Subscribe Button - bleibt in derselben Zeile */
   .subscribe {
-    flex-shrink: 0;
+    flex-shrink: 0;              /* Nicht schrumpfen */
+    margin-left: auto;           /* Rechts positionieren */
     padding: 10px 16px;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
+    white-space: nowrap;
   }
 }
 
-/* ========================= Page Layout - Mobile Grid ========================= */
+/* ========================= Navigation Tablet (768px - 1024px) ========================= */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  .main-nav {
+    justify-content: center;     /* Zentriert bei mehr Platz */
+    gap: 1.5rem;
+  }
+  
+  .subscribe {
+    margin-left: 2rem;           /* Abstand nach links */
+  }
+  
+  .nav-item:not(.subscribe) {
+    font-size: 0.95rem;
+  }
+}
+
+/* ========================= Navigation Mobile (< 768px) ========================= */
 @media screen and (max-width: 768px) {
+  .main-nav {
+    gap: 0.25rem;                /* Minimaler Abstand */
+    padding: 8px;
+  }
+  
+  .nav-item:not(.subscribe) {
+    padding: 8px 10px;
+    font-size: 0.8rem;
+  }
+  
+  .subscribe {
+    padding: 8px 12px;
+    font-size: 0.8rem;
+  }
+}
+
+/* ========================= Page Layout - Mobile ========================= */
+@media screen and (max-width: 1024px) {
   .page-layout {
     display: flex;
     flex-direction: column;
@@ -350,10 +379,6 @@ main img { max-width: 60%; margin: 20px 0; }
     max-width: 100%;
   }
   
-  /* Reihenfolge für mobile: 
-     1. Linke Info (Subscribe)
-     2. Side-Info (Organizer, Zeit, etc.)
-     3. Main Content */
   .left-info {
     order: 1;
   }
@@ -366,7 +391,6 @@ main img { max-width: 60%; margin: 20px 0; }
     order: 3;
   }
   
-  /* Info-Boxen als Stapel */
   .side-info {
     display: flex;
     flex-direction: column;
@@ -375,7 +399,7 @@ main img { max-width: 60%; margin: 20px 0; }
 }
 
 /* ========================= Info-Boxen - Mobile ========================= */
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1024px) {
   .info-box {
     padding: var(--space-md);
     margin-bottom: 0;
@@ -389,13 +413,8 @@ main img { max-width: 60%; margin: 20px 0; }
     margin-bottom: var(--space-xs);
   }
   
-  .info-box strong {
-    display: block;
-    margin-top: var(--space-xs);
-  }
-  
-  .box-2,
   .box-1,
+  .box-2,
   .box-3,
   .box-4 {
     background: var(--bg-light);
@@ -403,17 +422,10 @@ main img { max-width: 60%; margin: 20px 0; }
     border: 1px solid rgba(0, 119, 143, 0.2);
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
   }
-  
-  .box-2:active,
-  .box-1:active,
-  .box-3:active,
-  .box-4:active {
-    transform: scale(0.98);
-  }
 }
 
 /* ========================= Main Content - Mobile ========================= */
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1024px) {
   .main-content {
     background: var(--bg-white);
     backdrop-filter: none;
@@ -437,31 +449,167 @@ main img { max-width: 60%; margin: 20px 0; }
     line-height: 1.7;
     margin-bottom: var(--space-sm);
   }
-  
-  .main-content a {
-    font-size: 1rem;
-    word-break: break-word;
-    overflow-wrap: break-word;
-  }
 }
 
 /* ========================= Accordion - Touch-Optimiert ========================= */
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1024px) {
   .accordion {
     margin-bottom: var(--space-sm);
+    position: relative;
   }
   
   .accordion-button {
+    position: relative;
     min-height: var(--touch-target);
-    padding: var(--space-sm);
+    padding: var(--space-sm) 50px var(--space-sm) var(--space-sm);
     font-size: 0.95rem;
     line-height: 1.5;
     border-radius: 8px;
+    border: none;
     border-left: 4px solid var(--primary-teal);
     background: linear-gradient(135deg, #EBE4E7 0%, #E4E4F2 100%);
-    transition: all 0.2s ease;
     cursor: pointer;
     -webkit-tap-highlight-color: rgba(0, 155, 185, 0.2);
+    text-align: left;
+    width: 100%;
   }
   
   .accordion-button::after {
+    content: '+';
+    position: absolute;
+    right: var(--space-md);
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.5rem;
+    font-weight: 300;
+    transition: transform 0.2s ease;
+    color: var(--primary-teal);
+  }
+  
+  .accordion-button.active::after {
+    transform: translateY(-50%) rotate(45deg);
+  }
+  
+  .accordion-button.active {
+    background: var(--accent-blue);
+    color: white;
+    border-left-color: var(--accent-green);
+  }
+  
+  .accordion-content {
+    padding: var(--space-md);
+    background: white;
+    border-radius: 0 0 8px 8px;
+    border-left: 4px solid var(--accent-green);
+    margin-bottom: var(--space-sm);
+    font-size: 0.95rem;
+    line-height: 1.7;
+    display: none;
+  }
+  
+  .accordion-content.show {
+    display: block;
+  }
+}
+
+/* ========================= Canvas - Mobile Optimiert (NICHT ausgeblendet) ========================= */
+@media screen and (max-width: 1024px) {
+  #network-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    opacity: 0.5;                    /* Leicht reduziert für Performance */
+    pointer-events: none;            /* Keine Klick-Events */
+  }
+}
+
+/* ========================= Links - Touch-Optimiert ========================= */
+@media screen and (max-width: 1024px) {
+  a {
+    min-height: var(--touch-target);
+    display: inline-flex;
+    align-items: center;
+    padding: 2px 4px;
+    font-size: 1rem;
+    color: var(--primary-teal);
+    text-decoration: none;
+    word-break: break-word;
+  }
+  
+  a:active {
+    color: var(--accent-green);
+    background: rgba(155, 201, 150, 0.1);
+    border-radius: 4px;
+  }
+}
+
+/* ========================= Videos - Mobile ========================= */
+@media screen and (max-width: 1024px) {
+  .content-video {
+    width: 100%;
+    max-width: 100%;
+    border-radius: 8px;
+    margin: var(--space-md) 0;
+  }
+  
+  .video-figure {
+    margin: var(--space-md) 0;
+  }
+  
+  .video-figure figcaption {
+    font-size: 0.9rem;
+    padding: 0 var(--space-xs);
+  }
+}
+
+/* ========================= Dark Mode ========================= */
+@media screen and (max-width: 1024px) and (prefers-color-scheme: dark) {
+  :root {
+    --primary-dark: #F5F0F2;
+    --bg-white: #1a1a1a;
+    --bg-light: rgba(40, 40, 40, 0.95);
+  }
+  
+  body {
+    background-color: #121212;
+    color: #E0E0E0;
+  }
+  
+  .main-content {
+    background: #1E1E1E;
+    color: #E0E0E0;
+  }
+  
+  .info-box {
+    background: #252525;
+    border-color: #404040;
+    color: #E0E0E0;
+  }
+  
+  .accordion-button {
+    background: #2D2D2D;
+    color: #E0E0E0;
+  }
+  
+  .accordion-content {
+    background: #1E1E1E;
+    color: #C0C0C0;
+  }
+  
+  .main-nav {
+    background: #121212;
+  }
+}
+
+/* ========================= Reduzierte Animationen ========================= */
+@media screen and (max-width: 1024px) and (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
