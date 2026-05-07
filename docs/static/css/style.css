@@ -586,23 +586,14 @@ main img { max-width: 60%; margin: 20px 0; }
 }
 
 /* ---- Info-Box Collapsible Content ---- */
+/* ========================= Info-Box Collapsible ========================= */
 @media screen and (max-width: 1024px) {
-  .info-box.collapsible {
-    margin: 0; /* Wird vom Parent-Container gesteuert */
-  }
-  
   .info-box.collapsible .box-content p,
   .info-box.collapsible .box-content ul,
   .info-box.collapsible .box-content ol {
     margin-bottom: var(--space-xs);
     font-size: 0.95rem;
     line-height: 1.6;
-  }
-  
-  .info-box.collapsible .box-content p:last-child,
-  .info-box.collapsible .box-content ul:last-child,
-  .info-box.collapsible .box-content ol:last-child {
-    margin-bottom: 0;
   }
   
   .info-box.collapsible .box-content ul,
