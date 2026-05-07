@@ -158,27 +158,32 @@
 <!-- Accordion Script - Original behalten + Einklappbare Bereiche -->
 <script>
       // Accordion Script
+
+// Seminar-Accordions (funktionieren immer)
 document.querySelectorAll('.accordion-button').forEach(button => {
   button.addEventListener('click', (e) => {
-    e.stopPropagation(); // Verhindert Schließen des Parents
+    e.stopPropagation(); // Verhindert Schließen des Parent-Section-Wrappers
     
     const content = button.nextElementSibling;
-    const isOpen = button.classList.contains('active');
+    const isActive = button.classList.contains('active');
     
-    // Schließt andere im selben Accordion
-    button.parentElement.querySelectorAll('.accordion-button').forEach(b => {
-      b.classList.remove('active');
-      b.nextElementSibling.style.display = 'none';
-    });
+    // Schließt andere Accordions in derselben Section
+    const parentSection = button.closest('.section-content');
+    if (parentSection) {
+      parentSection.querySelectorAll('.accordion-button').forEach(b => {
+        b.classList.remove('active');
+        b.nextElementSibling.style.display = 'none';
+      });
+    }
     
-    if (!isOpen) {
+    if (!isActive) {
       button.classList.add('active');
       content.style.display = 'block';
     }
   });
 });
 
-// Mobile: Section-Wrapper als Accordion
+// Mobile: Section-Wrapper als Accordion (nur auf Mobile)
 if (window.innerWidth <= 1024) {
   document.querySelectorAll('.section-wrapper').forEach(wrapper => {
     wrapper.addEventListener('click', (e) => {
