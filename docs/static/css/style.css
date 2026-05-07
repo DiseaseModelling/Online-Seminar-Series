@@ -221,7 +221,7 @@ main img { max-width: 60%; margin: 20px 0; }
 
 /* ========================= CSS Custom Properties ========================= */
 :root {
-  --primary-dark: #280003;
+  --primary-dark: ##FFFFFF;
   --primary-teal: #00778F;
   --accent-green: #9BC996;
   --accent-green-dark: #82b880;
