@@ -152,7 +152,6 @@
 
 </div> 
 
-
 <!-- Accordion Script -->
 <script>
 
@@ -161,55 +160,66 @@
 // ============================================
 if (window.innerWidth <= 1024) {
   document.querySelectorAll('.section-wrapper').forEach(wrapper => {
-    wrapper.addEventListener('click', (e) => {
-      // Links nicht als Toggle behandeln
-      if (e.target.tagName === 'A' || e.target.closest('a')) return;
-      
-      wrapper.classList.toggle('expanded');
-      
-      // Toggle-Icon aktualisieren
-      const icon = wrapper.querySelector('.toggle-icon');
-      if (icon) {
-        icon.textContent = wrapper.classList.contains('expanded') ? '▲' : '▼';
-      }
-    });
+    const header = wrapper.querySelector('.section-header');
+    if (header) {
+      header.addEventListener('click', (e) => {
+        e.stopPropagation();
+        wrapper.classList.toggle('expanded');
+        
+        const icon = wrapper.querySelector('.toggle-icon');
+        if (icon) {
+          icon.textContent = wrapper.classList.contains('expanded') ? '▲' : '▼';
+        }
+      });
+    }
   });
-}
-
-// ============================================
-// Info-Boxen einklappbar (nur einzelne Boxen, NICHT in Section-Wrapper)
-// ============================================
-if (window.innerWidth <= 1024) {
+  
+  // Info-Box Header Klick
   document.querySelectorAll('.info-box:not(.section-wrapper .info-box)').forEach(box => {
-    box.addEventListener('click', (e) => {
-      // Links nicht als Toggle behandeln
-      if (e.target.tagName === 'A' || e.target.closest('a')) return;
-      
-      box.classList.toggle('expanded');
-    });
+    const header = box.querySelector('.info-header');
+    if (header) {
+      header.addEventListener('click', (e) => {
+        e.stopPropagation();
+        box.classList.toggle('expanded');
+      });
+    }
   });
+  
+  // Co-Organizer Toggle
+  const coorganizerWrapper = document.querySelector('.coorganizer-wrapper');
+  if (coorganizerWrapper) {
+    const header = coorganizerWrapper.querySelector('.coorganizer-header');
+    if (header) {
+      header.addEventListener('click', (e) => {
+        e.stopPropagation();
+        coorganizerWrapper.classList.toggle('expanded');
+        
+        const icon = coorganizerWrapper.querySelector('.toggle-icon');
+        if (icon) {
+          icon.textContent = coorganizerWrapper.classList.contains('expanded') ? '▲' : '▼';
+        }
+      });
+    }
+  }
 }
 
 // ============================================
-// Seminar-Accordions
+// Seminar-Accordions (funktioniert immer)
 // ============================================
 document.querySelectorAll('.accordion-button').forEach(button => {
   button.addEventListener('click', (e) => {
-    e.stopPropagation(); // Verhindert Schließen des Parent-Section-Wrappers
+    e.stopPropagation();
     
     const content = button.nextElementSibling;
     const isActive = button.classList.contains('active');
     
-    // Schließt alle anderen Accordions in derselben .section-content
-    const parentSection = button.closest('.section-content');
-    if (parentSection) {
-      parentSection.querySelectorAll('.accordion-button').forEach(b => {
-        if (b !== button) {
-          b.classList.remove('active');
-          b.nextElementSibling.style.display = 'none';
-        }
-      });
-    }
+    // Schließt alle anderen Accordions
+    button.closest('.accordion')?.querySelectorAll('.accordion-button').forEach(b => {
+      if (b !== button) {
+        b.classList.remove('active');
+        b.nextElementSibling.style.display = 'none';
+      }
+    });
     
     if (!isActive) {
       button.classList.add('active');
