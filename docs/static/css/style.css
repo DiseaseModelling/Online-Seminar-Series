@@ -569,7 +569,7 @@ main img { max-width: 60%; margin: 20px 0; }
 @media screen and (max-width: 1024px) and (prefers-color-scheme: dark) {
   :root {
     --primary-dark: #F5F0F2;
-    --bg-white: #1a1a1a;
+    --bg-white: #CCCCCC;
     --bg-light: rgba(40, 40, 40, 0.95);
   }
   
