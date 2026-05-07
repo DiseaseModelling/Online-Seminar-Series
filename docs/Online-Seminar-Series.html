@@ -58,7 +58,9 @@
  <div class="main-content">
 	   <!-- Wrapper für Mobile -->
 	 <div class="section-wrapper" data-section="upcoming">
+		 <div class="section-header">
 		 <h3>Semester 26: Upcoming Seminars</h3>
+			</div>
 		   <div class="section-content">
 		 <p>The online seminar will re-start in April 2026. The list of speakers will be displayed here:</p>
 		 <h2>Upcoming Seminars</h2>
@@ -109,8 +111,11 @@
 		
   <!-- RECHTER BEREICH: Info-Boxen -->
   <aside class="side-info">
-    <div class="info-box box-3">
+    <div class="info-box box-3 collapsible">
       <h3>Online Seminar Series</h3>
+		<span class="toggle-icon">▼</span>
+  	</div>	
+  <div class="box-content">
       <strong>Time:</strong> 1st or 2nd Wednesday of the month at <strong> 2pm </strong><br>
       <strong>Aim | Focus: </strong> Introduction, discussion and comparison of different mathematical modelling approaches.<br>
       <strong>Duration: </strong> 30 minutes talk +15' disussion</strong><br>
@@ -119,14 +124,14 @@
       <strong> Join here: <a href="https://mdc-berlin.zoom-x.de/j/68714994893?pwd=FVElQ6QEPJBE1d5azoiMfuU6AoCIma.1">Zoom</a></strong> <br>
       <strong> The talks at 2 pm. CET</strong>
     </div>
-
+</div>
   <!-- NEU: Wrapper für Co-Organizer -->
-  <div class="section-wrapper" data-section="coorganizer">
-    <div class="section-header">
+<div class="coorganizer-wrapper">
+  <div class="coorganizer-header">
       <h3>Co-Organizer</h3>
       <span class="toggle-icon">▼</span>
     </div>
-    <div class="section-content">
+    <div class="coorganizer-body">
       <div class="info-box box-1">
 	 <strong>Prof. Dr. Jana Wolf</strong>
       <p>Mathematical Modelling of Cellular Processes 
@@ -156,66 +161,51 @@
 <script>
 
 // ============================================
-// Section-Wrapper Toggle (nur Mobile)
+// Section-Wrapper Toggle
 // ============================================
 document.querySelectorAll('.section-wrapper').forEach(wrapper => {
   const header = wrapper.querySelector('.section-header');
   if (header) {
-    header.addEventListener('click', (e) => {
+    header.addEventListener('click', () => {
       wrapper.classList.toggle('expanded');
-      updateToggleIcon(wrapper);
     });
   }
 });
 
 // ============================================
-// Co-Organizer Toggle (nur Mobile)
+// Co-Organizer Toggle
 // ============================================
 const coorganizerWrapper = document.querySelector('.coorganizer-wrapper');
 if (coorganizerWrapper) {
   const header = coorganizerWrapper.querySelector('.coorganizer-header');
   if (header) {
-    header.addEventListener('click', (e) => {
+    header.addEventListener('click', () => {
       coorganizerWrapper.classList.toggle('expanded');
-      updateToggleIcon(coorganizerWrapper);
     });
   }
 }
 
 // ============================================
-// Info-Box Toggle (nur Mobile)
+// Info-Box Collapsible Toggle
 // ============================================
-document.querySelectorAll('.info-box.has-toggle').forEach(box => {
-  const header = box.querySelector('.info-header');
+document.querySelectorAll('.info-box.collapsible').forEach(box => {
+  const header = box.querySelector('.box-header');
   if (header) {
-    header.addEventListener('click', (e) => {
+    header.addEventListener('click', () => {
       box.classList.toggle('expanded');
-      updateToggleIcon(box);
     });
   }
 });
 
 // ============================================
-// Hilfsfunktion für Toggle-Icon
-// ============================================
-function updateToggleIcon(element) {
-  const icon = element.querySelector('.toggle-icon');
-  if (icon) {
-    icon.textContent = element.classList.contains('expanded') ? '▲' : '▼';
-  }
-}
-
-// ============================================
-// Seminar-Accordions (funktioniert immer)
+// Seminar-Accordions
 // ============================================
 document.querySelectorAll('.accordion-button').forEach(button => {
-  button.addEventListener('click', (e) => {
-    e.stopPropagation();
-    
+  button.addEventListener('click', () => {
     const content = button.nextElementSibling;
     const isActive = button.classList.contains('active');
     
-    // Schließt alle anderen Accordions
+    // Schließt alle anderen in derselben section-content
     button.closest('.section-content')?.querySelectorAll('.accordion-button').forEach(b => {
       if (b !== button) {
         b.classList.remove('active');
