@@ -349,6 +349,10 @@ main img { max-width: 60%; margin: 20px 0; }
   
   .main-content {
     order: 2;
+    background: var(--bg-white);
+    padding: var(--space-sm);
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
   }
   
   .side-info {
@@ -384,13 +388,6 @@ main img { max-width: 60%; margin: 20px 0; }
 
 /* ========================= Main Content - Mobile ========================= */
 @media screen and (max-width: 1024px) {
-  .main-content {
-    background: var(--bg-white);
-    padding: var(--space-sm);
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-  }
-  
   .main-content h2 {
     font-size: 1.1rem;
     margin: var(--space-md) 0 var(--space-xs);
@@ -409,17 +406,8 @@ main img { max-width: 60%; margin: 20px 0; }
 }
 
 /* ========================= Section-Wrapper (Accordion-Buttons) ========================= */
-/* ==========================================================================
-   MOBILE STYLES - eingefügt in bestehende mobile.css
-   Basiert auf der Original-CSS, nur neue Styles hinzugefügt
-   ========================================================================== */
-
-/* ============================================
-   Section-Wrapper (Accordion-Buttons) 
-   ============================================ */
 @media screen and (max-width: 1024px) {
   .section-wrapper {
-    background: var(--bg-white);
     border: 1px solid #ddd;
     border-radius: 8px;
     margin: var(--space-md) 0;
@@ -443,10 +431,9 @@ main img { max-width: 60%; margin: 20px 0; }
     color: var(--primary-teal);
   }
   
-  .toggle-icon {
+  .section-header .toggle-icon {
     font-size: 0.8rem;
     color: var(--primary-teal);
-    transition: transform 0.2s;
     flex-shrink: 0;
     margin-left: var(--space-sm);
   }
@@ -461,149 +448,10 @@ main img { max-width: 60%; margin: 20px 0; }
     display: block;
   }
   
-  .section-wrapper.expanded .toggle-icon {
+  .section-wrapper.expanded .section-header .toggle-icon {
     transform: rotate(180deg);
   }
-}
-
-
   
-  /* Links in geschlossenem Accordion deaktiviert
-  .section-wrapper:not(.expanded) .section-content a {
-    pointer-events: none;
-    opacity: 0.5;
-  }
-  
-  .section-wrapper.expanded .section-content a {
-    pointer-events: auto;
-    opacity: 1;
-  }
-} */
-
-/* ============================================
-   Co-Organizer Wrapper - NEU
-   ============================================ */
-@media screen and (max-width: 1024px) {
-  .coorganizer-wrapper {
-    background: var(--bg-white);
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    margin-bottom: var(--space-md);
-    overflow: hidden;
-  }
-  
-  .coorganizer-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: var(--space-md);
-    cursor: pointer;
-    background: #f8f8f8;
-    min-height: 50px;
-  }
-  
-  .coorganizer-header h3 {
-    margin: 0;
-    font-size: 1rem;
-    color: var(--primary-teal);
-  }
-  
-  .coorganizer-body {
-    display: none;
-    padding: var(--space-md);
-    background: var(--bg-white);
-  }
-  
-  .coorganizer-wrapper.expanded .coorganizer-body {
-    display: block;
-  }
-  
-  .coorganizer-body .info-box {
-    background: #f9f9f9;
-    padding: var(--space-md);
-    border-radius: 8px;
-    border-left: 3px solid var(--primary-teal);
-    margin-bottom: var(--space-md);
-  }
-  
-  .coorganizer-body .info-box:last-child {
-    margin-bottom: 0;
-  }
-}
-
-/* ============================================
-   Main Content - volle Breite
-   ============================================ */
-@media screen and (max-width: 1024px) {
-  .main-content {
-    background: var(--bg-white);
-    padding: var(--space-md);
-    border-radius: 0;
-    box-shadow: none;
-    margin: 0;
-    width: 100%;
-  }
-  
-  .main-content .section-wrapper {
-    width: 100%;
-    box-sizing: border-box;
-  }
-}
-
-
-/* ============================================
-   Info-Box 
-   ============================================ */
-@media screen and (max-width: 1024px) {
-  /* Info-Box mit interner Struktur */
-  .info-box.has-toggle {
-    background: var(--bg-white);
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    margin: var(--space-md) 0;
-    overflow: hidden;
-  }
-  
-  .info-box.has-toggle .info-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: var(--space-sm) var(--space-md);
-    cursor: pointer;
-    background: #f8f8f8;
-    min-height: 50px;
-  }
-  
-  .info-box.has-toggle .info-header h3 {
-    margin: 0;
-    font-size: 1rem;
-    color: var(--primary-teal);
-  }
-  
-  .info-box.has-toggle .info-header .toggle-icon {
-    font-size: 0.8rem;
-    color: var(--primary-teal);
-    transition: transform 0.2s;
-    flex-shrink: 0;
-    margin-left: var(--space-sm);
-  }
-  
-  .info-box.has-toggle .info-body {
-    display: none;
-    padding: var(--space-md);
-    background: var(--bg-white);
-  }
-  
-  .info-box.has-toggle.expanded .info-body {
-    display: block;
-  }
-  
-  .info-box.has-toggle.expanded .toggle-icon {
-    transform: rotate(180deg);
-  }
-}
-/* ========================= Main Content - Section-Wrapper Integration ========================= */
-@media screen and (max-width: 1024px) {
   .main-content .section-wrapper {
     margin: var(--space-sm) 0;
   }
@@ -616,6 +464,112 @@ main img { max-width: 60%; margin: 20px 0; }
   .main-content .section-wrapper h3 {
     font-size: 1rem;
     margin: 0;
+  }
+}
+
+/* ========================= Co-Organizer Wrapper ========================= */
+@media screen and (max-width: 1024px) {
+  .coorganizer-wrapper {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin: var(--space-md) 0;
+    overflow: hidden;
+  }
+  
+  .coorganizer-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--space-sm) var(--space-md);
+    cursor: pointer;
+    background: #f8f8f8;
+    min-height: 50px;
+  }
+  
+  .coorganizer-header h3 {
+    margin: 0;
+    font-size: 1rem;
+    color: var(--primary-teal);
+  }
+  
+  .coorganizer-header .toggle-icon {
+    font-size: 0.8rem;
+    color: var(--primary-teal);
+    flex-shrink: 0;
+    margin-left: var(--space-sm);
+  }
+  
+  .coorganizer-body {
+    display: none;
+    padding: var(--space-md);
+    background: var(--bg-white);
+  }
+  
+  .coorganizer-wrapper.expanded .coorganizer-body {
+    display: block;
+  }
+  
+  .coorganizer-wrapper.expanded .coorganizer-header .toggle-icon {
+    transform: rotate(180deg);
+  }
+  
+  .coorganizer-body .info-box {
+    background: #f9f9f9;
+    padding: var(--space-md);
+    border-radius: 8px;
+    border-left: 3px solid var(--primary-teal);
+    margin-bottom: var(--space-sm);
+  }
+  
+  .coorganizer-body .info-box:last-child {
+    margin-bottom: 0;
+  }
+}
+
+/* ========================= Info-Box Collapsible ========================= */
+@media screen and (max-width: 1024px) {
+  .info-box.collapsible {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin: var(--space-md) 0;
+    overflow: hidden;
+  }
+  
+  .info-box.collapsible .box-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--space-sm) var(--space-md);
+    cursor: pointer;
+    background: #f8f8f8;
+    min-height: 50px;
+  }
+  
+  .info-box.collapsible .box-header h3 {
+    margin: 0;
+    font-size: 1rem;
+    color: var(--primary-teal);
+  }
+  
+  .info-box.collapsible .box-header .toggle-icon {
+    font-size: 0.8rem;
+    color: var(--primary-teal);
+    flex-shrink: 0;
+    margin-left: var(--space-sm);
+  }
+  
+  .info-box.collapsible .box-content {
+    display: none;
+    padding: var(--space-md);
+    background: var(--bg-white);
+  }
+  
+  .info-box.collapsible.expanded .box-content {
+    display: block;
+  }
+  
+  .info-box.collapsible.expanded .box-header .toggle-icon {
+    transform: rotate(180deg);
   }
 }
 
@@ -803,6 +757,32 @@ main img { max-width: 60%; margin: 20px 0; }
   
   .nav-item:not(.subscribe) {
     color: #E0E0E0;
+  }
+  
+  .coorganizer-wrapper {
+    background: #1E1E1E;
+    border-color: #333;
+  }
+  
+  .coorganizer-header {
+    background: #252525;
+  }
+  
+  .coorganizer-body {
+    background: #1E1E1E;
+  }
+  
+  .info-box.collapsible {
+    background: #1E1E1E;
+    border-color: #333;
+  }
+  
+  .info-box.collapsible .box-header {
+    background: #252525;
+  }
+  
+  .info-box.collapsible .box-content {
+    background: #1E1E1E;
   }
 }
 
