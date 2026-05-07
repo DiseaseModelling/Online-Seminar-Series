@@ -221,7 +221,7 @@ main img { max-width: 60%; margin: 20px 0; }
 
 /* ========================= CSS Custom Properties ========================= */
 :root {
-  --primary-dark: ##FFFFFF;
+  --primary-dark: #FFFFFF;
   --primary-teal: #00778F;
   --accent-green: #9BC996;
   --accent-green-dark: #82b880;
@@ -291,10 +291,10 @@ main img { max-width: 60%; margin: 20px 0; }
   .main-nav {
     position: relative;
     display: flex;
-    flex-wrap: nowrap;           /* NICHT umbrechen */
-    align-items: center;         /* Vertikal zentriert */
-    justify-content: flex-start; /* Links beginnen */
-    gap: 0.5rem;                 /* Kleinerer Abstand */
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 0.5rem;
     padding: var(--space-sm);
     background: var(--bg-white);
     border-bottom: 2px solid var(--primary-teal);
@@ -308,11 +308,10 @@ main img { max-width: 60%; margin: 20px 0; }
     display: none;
   }
   
-  /* Navigation Items - alle gleichmäßig */
   .nav-item:not(.subscribe) {
-    flex-shrink: 0;              /* Nicht schrumpfen */
+    flex-shrink: 0;
     padding: 10px 12px;
-    font-size: 0.85rem;          /* Kleinere Schrift */
+    font-size: 0.85rem;
     white-space: nowrap;
     border-bottom: 2px solid transparent;
     transition: border-color 0.2s ease, color 0.2s ease;
@@ -324,47 +323,12 @@ main img { max-width: 60%; margin: 20px 0; }
     color: var(--accent-green);
   }
   
-  /* Subscribe Button - bleibt in derselben Zeile */
   .subscribe {
-    flex-shrink: 0;              /* Nicht schrumpfen */
-    margin-left: auto;           /* Rechts positionieren */
+    flex-shrink: 0;
+    margin-left: auto;
     padding: 10px 16px;
     font-size: 0.85rem;
     white-space: nowrap;
-  }
-}
-
-/* ========================= Navigation Tablet (768px - 1024px) ========================= */
-@media screen and (min-width: 769px) and (max-width: 1024px) {
-  .main-nav {
-    justify-content: center;     /* Zentriert bei mehr Platz */
-    gap: 1.5rem;
-  }
-  
-  .subscribe {
-    margin-left: 2rem;           /* Abstand nach links */
-  }
-  
-  .nav-item:not(.subscribe) {
-    font-size: 0.95rem;
-  }
-}
-
-/* ========================= Navigation Mobile (< 768px) ========================= */
-@media screen and (max-width: 768px) {
-  .main-nav {
-    gap: 0.25rem;                /* Minimaler Abstand */
-    padding: 8px;
-  }
-  
-  .nav-item:not(.subscribe) {
-    padding: 8px 10px;
-    font-size: 0.8rem;
-  }
-  
-  .subscribe {
-    padding: 8px 12px;
-    font-size: 0.8rem;
   }
 }
 
@@ -389,12 +353,6 @@ main img { max-width: 60%; margin: 20px 0; }
   
   .side-info {
     order: 3;
-  }
-  
-  .side-info {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-sm);
   }
 }
 
@@ -426,120 +384,105 @@ main img { max-width: 60%; margin: 20px 0; }
 
 /* ========================= Main Content - Mobile ========================= */
 @media screen and (max-width: 1024px) {
-  /* ============= Bestehende Styles ============= */
-/*  .main-content {
+  .main-content {
     background: var(--bg-white);
-    backdrop-filter: none;
-    padding: var(--space-md);
-    border-radius: 12px;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+    padding: var(--space-sm);
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
   }
   
   .main-content h2 {
-    font-size: 1.3rem;
-    margin: var(--space-md) 0 var(--space-sm);
-  }
-  
-  .main-content h3 {
     font-size: 1.1rem;
     margin: var(--space-md) 0 var(--space-xs);
   }
   
-  .main-content p {
+  .main-content h3 {
     font-size: 1rem;
-    line-height: 1.7;
-    margin-bottom: var(--space-sm);
-  }
-  
-  /* =============Einklappbare Bereiche ============= */
-  
-  .main-content {
-    background: linear-gradient(135deg, #EBE4E7, #E4E4F2);
-    border-left: 4px solid var(--primary-teal);
-    border-radius: 8px;
-    padding: var(--space-md);
-    cursor: pointer;
-    margin-bottom: var(--space-md);
-    max-height: 120px;
-    overflow: hidden;
-    position: relative;
-  }
-  
-  .main-content h2 {
-    margin-top: 0;
-    font-size: 1rem;
+    margin: var(--space-md) 0 var(--space-xs);
   }
   
   .main-content p {
-    font-size: 0.9rem;
-    line-height: 1.5;
-  }
-  
-  .main-content p:nth-child(n+2) {
-    display: none;
-  }
-  
-  /* Fade + "Mehr lesen" Button */
-  .main-content::after {
-    content: "read more ▼";
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    padding: var(--space-sm);
-    background: linear-gradient(transparent, #E4E4F2);
-    text-align: center;
-    color: var(--primary-teal);
-    font-weight: 600;
-    font-size: 0.85rem;
-  }
-  
-  /* Brief aufgeklappt */
-  .main-content.expanded {
-    max-height: none;
-  }
-  
-  .main-content.expanded p {
-    display: block;
-  }
-  
-  .main-content.expanded::after {
-    content: "show less ▲";
-    background: linear-gradient(transparent, #EBE4E7);
-  }
-  
-  /* Info-Boxen einklappbar */
-  .info-box {
-    max-height: 150px;
-    overflow: hidden;
-    position: relative;
-    cursor: pointer;
-  }
-  
-  .info-box::after {
-    content: "more ▼";
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    padding: var(--space-sm);
-    background: linear-gradient(transparent, var(--bg-white));
-    text-align: center;
-    color: var(--primary-teal);
-    font-weight: 600;
-    font-size: 0.85rem;
-  }
-  
-  .info-box.expanded {
-    max-height: none;
-  }
-  
-  .info-box.expanded::after {
-    display: none;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: var(--space-xs);
   }
 }
 
-/* ========================= Accordion - Touch-Optimiert ========================= */
+/* ========================= Section-Wrapper (Accordion-Buttons) ========================= */
+@media screen and (max-width: 1024px) {
+  .section-wrapper {
+    background: var(--bg-white);
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin-bottom: var(--space-md);
+    overflow: hidden;
+  }
+  
+  .section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--space-sm) var(--space-md);
+    cursor: pointer;
+    background: #f8f8f8;
+    margin: 0;
+  }
+  
+  .section-header h2,
+  .section-header h3 {
+    margin: 0;
+    font-size: 1rem;
+    color: var(--primary-teal);
+  }
+  
+  .toggle-icon {
+    font-size: 0.8rem;
+    color: var(--primary-teal);
+    transition: transform 0.2s;
+  }
+  
+  .section-content {
+    display: none;
+    padding: var(--space-md);
+  }
+  
+  .section-wrapper.expanded .section-content {
+    display: block;
+  }
+  
+  .section-wrapper.expanded .toggle-icon {
+    transform: rotate(180deg);
+  }
+  
+  /* Links in geschlossenem Accordion deaktiviert */
+  .section-wrapper:not(.expanded) .section-content a {
+    pointer-events: none;
+    opacity: 0.5;
+  }
+  
+  .section-wrapper.expanded .section-content a {
+    pointer-events: auto;
+    opacity: 1;
+  }
+}
+
+/* ========================= Co-Organizer Zusammenfassung ========================= */
+@media screen and (max-width: 1024px) {
+  .section-wrapper[data-section="coorganizer"] .section-content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+  }
+  
+  .section-wrapper[data-section="coorganizer"] .info-box {
+    background: #f9f9f9;
+    padding: var(--space-md);
+    border-radius: 8px;
+    border-left: 3px solid var(--primary-teal);
+  }
+}
+
+/* ========================= Accordion (Seminare) - Touch-Optimiert ========================= */
 @media screen and (max-width: 1024px) {
   .accordion {
     margin-bottom: var(--space-sm);
@@ -555,27 +498,31 @@ main img { max-width: 60%; margin: 20px 0; }
     border-radius: 8px;
     border: none;
     border-left: 4px solid var(--primary-teal);
-    background: linear-gradient(135deg, #EBE4E7 0%, #E4E4F2 100%);
+    background: #f8f8f8;
     cursor: pointer;
     -webkit-tap-highlight-color: rgba(0, 155, 185, 0.2);
     text-align: left;
     width: 100%;
+    color: #280003;
+  }
+  
+  .accordion-button:hover {
+    background: #f0f0f0;
   }
   
   .accordion-button::after {
-    content: '+';
+    content: '▼';
     position: absolute;
     right: var(--space-md);
     top: 50%;
     transform: translateY(-50%);
-    font-size: 1.5rem;
-    font-weight: 300;
+    font-size: 0.8rem;
     transition: transform 0.2s ease;
     color: var(--primary-teal);
   }
   
   .accordion-button.active::after {
-    transform: translateY(-50%) rotate(45deg);
+    transform: translateY(-50%) rotate(180deg);
   }
   
   .accordion-button.active {
@@ -598,9 +545,17 @@ main img { max-width: 60%; margin: 20px 0; }
   .accordion-content.show {
     display: block;
   }
+  
+  .accordion-content p {
+    margin-bottom: var(--space-xs);
+  }
+  
+  .accordion-content a {
+    color: var(--primary-teal);
+  }
 }
 
-/* ========================= Canvas - Mobile Optimiert (NICHT ausgeblendet) ========================= */
+/* ========================= Canvas - Mobile Optimiert ========================= */
 @media screen and (max-width: 1024px) {
   #network-bg {
     position: fixed;
@@ -609,8 +564,8 @@ main img { max-width: 60%; margin: 20px 0; }
     width: 100%;
     height: 100%;
     z-index: -1;
-    opacity: 0.5;                    /* Leicht reduziert für Performance */
-    pointer-events: none;            /* Keine Klick-Events */
+    opacity: 0.4;
+    pointer-events: none;
   }
 }
 
@@ -621,7 +576,7 @@ main img { max-width: 60%; margin: 20px 0; }
     display: inline-flex;
     align-items: center;
     padding: 2px 4px;
-    font-size: 1rem;
+    font-size: 0.95rem;
     color: var(--primary-teal);
     text-decoration: none;
     word-break: break-word;
@@ -657,7 +612,7 @@ main img { max-width: 60%; margin: 20px 0; }
 @media screen and (max-width: 1024px) and (prefers-color-scheme: dark) {
   :root {
     --primary-dark: #F5F0F2;
-    --bg-white: #CCCCCC;
+    --bg-white: #1E1E1E;
     --bg-light: rgba(40, 40, 40, 0.95);
   }
   
@@ -671,6 +626,19 @@ main img { max-width: 60%; margin: 20px 0; }
     color: #E0E0E0;
   }
   
+  .section-wrapper {
+    background: #1E1E1E;
+    border-color: #333;
+  }
+  
+  .section-header {
+    background: #252525;
+  }
+  
+  .section-content {
+    background: #1E1E1E;
+  }
+  
   .info-box {
     background: #252525;
     border-color: #404040;
@@ -682,6 +650,10 @@ main img { max-width: 60%; margin: 20px 0; }
     color: #E0E0E0;
   }
   
+  .accordion-button:hover {
+    background: #3D3D3D;
+  }
+  
   .accordion-content {
     background: #1E1E1E;
     color: #C0C0C0;
@@ -689,6 +661,11 @@ main img { max-width: 60%; margin: 20px 0; }
   
   .main-nav {
     background: #121212;
+    border-color: #333;
+  }
+  
+  .nav-item:not(.subscribe) {
+    color: #E0E0E0;
   }
 }
 
