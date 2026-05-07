@@ -640,7 +640,7 @@ main img { max-width: 60%; margin: 20px 0; }
     -webkit-tap-highlight-color: rgba(0, 155, 185, 0.2);
     text-align: left;
     width: 100%;
-    color: #280003;
+    color: #E0E0E0;
     display: flex;
     align-items: center;
   }
@@ -809,6 +809,7 @@ main img { max-width: 60%; margin: 20px 0; }
   
   .coorganizer-body .info-box {
     background: #252525;
+    color: #E0E0E0;
   }
 }
 
