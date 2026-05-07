@@ -155,33 +155,10 @@
 
 <!-- Accordion Script - Original behalten + Einklappbare Bereiche -->
 <script>
-      // Accordion Script
 
-// Seminar-Accordions (funktionieren immer)
-document.querySelectorAll('.accordion-button').forEach(button => {
-  button.addEventListener('click', (e) => {
-    e.stopPropagation(); // Verhindert Schließen des Parent-Section-Wrappers
-    
-    const content = button.nextElementSibling;
-    const isActive = button.classList.contains('active');
-    
-    // Schließt andere Accordions in derselben Section
-    const parentSection = button.closest('.section-content');
-    if (parentSection) {
-      parentSection.querySelectorAll('.accordion-button').forEach(b => {
-        b.classList.remove('active');
-        b.nextElementSibling.style.display = 'none';
-      });
-    }
-    
-    if (!isActive) {
-      button.classList.add('active');
-      content.style.display = 'block';
-    }
-  });
-});
-
-// Mobile: Section-Wrapper als Accordion (nur auf Mobile)
+// ============================================
+// Section-Wrapper Accordion (nur Mobile)
+// ============================================
 if (window.innerWidth <= 1024) {
   document.querySelectorAll('.section-wrapper').forEach(wrapper => {
     wrapper.addEventListener('click', (e) => {
@@ -197,6 +174,38 @@ if (window.innerWidth <= 1024) {
       }
     });
   });
+}
+
+// ============================================
+// Seminar-Accordions
+// ============================================
+document.querySelectorAll('.accordion-button').forEach(button => {
+  button.addEventListener('click', (e) => {
+    e.stopPropagation(); // Verhindert Schließen des Parent-Section-Wrappers
+    
+    const content = button.nextElementSibling;
+    const isActive = button.classList.contains('active');
+    
+    // Schließt alle anderen Accordions in derselben .section-content
+    const parentSection = button.closest('.section-content');
+    if (parentSection) {
+      parentSection.querySelectorAll('.accordion-button').forEach(b => {
+        if (b !== button) {
+          b.classList.remove('active');
+          b.nextElementSibling.style.display = 'none';
+        }
+      });
+    }
+    
+    if (!isActive) {
+      button.classList.add('active');
+      content.style.display = 'block';
+    } else {
+      button.classList.remove('active');
+      content.style.display = 'none';
+    }
+  });
+});
 }
     </script>
 </div>
