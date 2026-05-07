@@ -156,50 +156,52 @@
 <script>
 
 // ============================================
-// Section-Wrapper Accordion (nur Mobile)
+// Section-Wrapper Toggle (nur Mobile)
 // ============================================
-if (window.innerWidth <= 1024) {
-  document.querySelectorAll('.section-wrapper').forEach(wrapper => {
-    const header = wrapper.querySelector('.section-header');
-    if (header) {
-      header.addEventListener('click', (e) => {
-        e.stopPropagation();
-        wrapper.classList.toggle('expanded');
-        
-        const icon = wrapper.querySelector('.toggle-icon');
-        if (icon) {
-          icon.textContent = wrapper.classList.contains('expanded') ? '▲' : '▼';
-        }
-      });
-    }
-  });
-  
-  // Info-Box Header Klick
-  document.querySelectorAll('.info-box:not(.section-wrapper .info-box)').forEach(box => {
-    const header = box.querySelector('.info-header');
-    if (header) {
-      header.addEventListener('click', (e) => {
-        e.stopPropagation();
-        box.classList.toggle('expanded');
-      });
-    }
-  });
-  
-  // Co-Organizer Toggle
-  const coorganizerWrapper = document.querySelector('.coorganizer-wrapper');
-  if (coorganizerWrapper) {
-    const header = coorganizerWrapper.querySelector('.coorganizer-header');
-    if (header) {
-      header.addEventListener('click', (e) => {
-        e.stopPropagation();
-        coorganizerWrapper.classList.toggle('expanded');
-        
-        const icon = coorganizerWrapper.querySelector('.toggle-icon');
-        if (icon) {
-          icon.textContent = coorganizerWrapper.classList.contains('expanded') ? '▲' : '▼';
-        }
-      });
-    }
+document.querySelectorAll('.section-wrapper').forEach(wrapper => {
+  const header = wrapper.querySelector('.section-header');
+  if (header) {
+    header.addEventListener('click', (e) => {
+      wrapper.classList.toggle('expanded');
+      updateToggleIcon(wrapper);
+    });
+  }
+});
+
+// ============================================
+// Co-Organizer Toggle (nur Mobile)
+// ============================================
+const coorganizerWrapper = document.querySelector('.coorganizer-wrapper');
+if (coorganizerWrapper) {
+  const header = coorganizerWrapper.querySelector('.coorganizer-header');
+  if (header) {
+    header.addEventListener('click', (e) => {
+      coorganizerWrapper.classList.toggle('expanded');
+      updateToggleIcon(coorganizerWrapper);
+    });
+  }
+}
+
+// ============================================
+// Info-Box Toggle (nur Mobile)
+// ============================================
+document.querySelectorAll('.info-box.has-toggle').forEach(box => {
+  const header = box.querySelector('.info-header');
+  if (header) {
+    header.addEventListener('click', (e) => {
+      box.classList.toggle('expanded');
+      updateToggleIcon(box);
+    });
+  }
+});
+
+// ============================================
+// Hilfsfunktion für Toggle-Icon
+// ============================================
+function updateToggleIcon(element) {
+  const icon = element.querySelector('.toggle-icon');
+  if (icon) {
+    icon.textContent = element.classList.contains('expanded') ? '▲' : '▼';
   }
 }
 
@@ -214,7 +216,7 @@ document.querySelectorAll('.accordion-button').forEach(button => {
     const isActive = button.classList.contains('active');
     
     // Schließt alle anderen Accordions
-    button.closest('.accordion')?.querySelectorAll('.accordion-button').forEach(b => {
+    button.closest('.section-content')?.querySelectorAll('.accordion-button').forEach(b => {
       if (b !== button) {
         b.classList.remove('active');
         b.nextElementSibling.style.display = 'none';
