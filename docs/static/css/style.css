@@ -409,6 +409,12 @@ main img { max-width: 60%; margin: 20px 0; }
 }
 
 /* ========================= Section-Wrapper (Accordion-Buttons) ========================= */
+/* ==========================================================================
+   MOBILE STYLES - eingefügt in bestehende mobile.css
+   Basiert auf der Original-CSS, nur neue Styles hinzugefügt
+   ========================================================================== */
+
+/* ========================= Section-Wrapper (Accordion-Buttons) ========================= */
 @media screen and (max-width: 1024px) {
   .section-wrapper {
     background: var(--bg-white);
@@ -479,6 +485,28 @@ main img { max-width: 60%; margin: 20px 0; }
     padding: var(--space-md);
     border-radius: 8px;
     border-left: 3px solid var(--primary-teal);
+  }
+  
+  .section-wrapper[data-section="coorganizer"] .info-box strong {
+    display: block;
+    margin-bottom: var(--space-xs);
+  }
+}
+
+/* ========================= Main Content - Section-Wrapper Integration ========================= */
+@media screen and (max-width: 1024px) {
+  .main-content .section-wrapper {
+    margin: var(--space-sm) 0;
+  }
+  
+  .main-content .section-wrapper h2 {
+    font-size: 1.1rem;
+    margin: 0;
+  }
+  
+  .main-content .section-wrapper h3 {
+    font-size: 1rem;
+    margin: 0;
   }
 }
 
