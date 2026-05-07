@@ -427,7 +427,7 @@ main img { max-width: 60%; margin: 20px 0; }
 /* ========================= Main Content - Mobile ========================= */
 @media screen and (max-width: 1024px) {
   /* ============= Bestehende Styles ============= */
-  .main-content {
+/*  .main-content {
     background: var(--bg-white);
     backdrop-filter: none;
     padding: var(--space-md);
@@ -453,7 +453,7 @@ main img { max-width: 60%; margin: 20px 0; }
   
   /* =============Einklappbare Bereiche ============= */
   
-  .brief {
+  .main-content {
     background: linear-gradient(135deg, #EBE4E7, #E4E4F2);
     border-left: 4px solid var(--primary-teal);
     border-radius: 8px;
@@ -465,22 +465,22 @@ main img { max-width: 60%; margin: 20px 0; }
     position: relative;
   }
   
-  .brief h2 {
+  .main-content h2 {
     margin-top: 0;
     font-size: 1rem;
   }
   
-  .brief p {
+  .main-content p {
     font-size: 0.9rem;
     line-height: 1.5;
   }
   
-  .brief p:nth-child(n+2) {
+  .main-content p:nth-child(n+2) {
     display: none;
   }
   
   /* Fade + "Mehr lesen" Button */
-  .brief::after {
+  .main-content::after {
     content: "read more ▼";
     position: absolute;
     bottom: 0;
@@ -495,15 +495,15 @@ main img { max-width: 60%; margin: 20px 0; }
   }
   
   /* Brief aufgeklappt */
-  .brief.expanded {
+  .main-content.expanded {
     max-height: none;
   }
   
-  .brief.expanded p {
+  .main-content.expanded p {
     display: block;
   }
   
-  .brief.expanded::after {
+  .main-content.expanded::after {
     content: "show less ▲";
     background: linear-gradient(transparent, #EBE4E7);
   }
@@ -517,7 +517,7 @@ main img { max-width: 60%; margin: 20px 0; }
   }
   
   .info-box::after {
-    content: "Mehr ▼";
+    content: "more ▼";
     position: absolute;
     bottom: 0;
     left: 0;
