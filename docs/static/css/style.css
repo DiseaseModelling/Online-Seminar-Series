@@ -215,71 +215,66 @@ main ul { padding-left: 20px; }
 main li { margin-bottom: 6px; }
 main img { max-width: 60%; margin: 20px 0; }
 
-/* ========================================
-   MOBILE VERSION
-======================================== */
-
 /* =========================================
+   HARD MOBILE OVERRIDES
+========================================= */
 
+@media screen and (max-width: 768px) {
+
+  /* FORCE ALL MAJOR CONTAINERS FULL WIDTH */
+
+  .wrapper,
+  .topbar,
+  .main-nav,
+  .page-layout,
+  .main-content,
+  .left-info,
+  .side-info,
+  .accordion,
+  .accordion-content,
+  .info-box {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+  }
+
+
+  /* REMOVE DESKTOP COLUMN SIZES */
+
+  .left-info,
+  .side-info,
+  .main-content {
+    flex: none !important;
+    grid-column: auto !important;
+  }
+
+
+  /* KILL DESKTOP GRID */
+
+  .page-layout {
+    display: block !important;
+    padding: 14px !important;
+  }
+
+
+  /* REMOVE DESKTOP MARGINS */
+
+  .main-content,
+  .left-info,
+  .side-info {
+    margin: 0 0 24px 0 !important;
+    padding: 0 !important;
+  }
+
+
+  /* MAKE TEXT ACTUALLY READABLE */
+
+  .main-content p,
   .accordion-content p {
-    margin-bottom: 1.2rem;
-    text-align: left;
-  }
-
-
-  /* =========================
-     PDF BUTTONS
-  ========================= */
-
-  .accordion-content a[target="_blank"] {
-    display: inline-block;
-    width: 100%;
-    text-align: center;
-    padding: 16px;
-    margin-top: 16px;
-    border-radius: 14px;
-    font-weight: 600;
-    text-decoration: none;
-  }
-
-
-  /* =========================
-     LINKS
-  ========================= */
-
-  a {
-    word-break: break-word;
-  }
-
-
-  /* =========================
-     NETWORK BACKGROUND
-  ========================= */
-
-  #network-bg {
-    opacity: 0.18;
-  }
-
-
-  /* =========================
-     BETTER SPACING
-  ========================= */
-
-  .main-content > * {
-    margin-left: 0;
-    margin-right: 0;
-  }
-
-
-  /* =========================
-     ZOOM PREVENTION ON IOS
-  ========================= */
-
-  input,
-  textarea,
-  select,
-  button {
-    font-size: 16px;
+    font-size: 1.05rem !important;
+    line-height: 1.9 !important;
+    width: 100% !important;
+    max-width: 100% !important;
   }
 
 }
