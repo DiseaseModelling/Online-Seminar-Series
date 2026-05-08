@@ -221,6 +221,14 @@ main img { max-width: 60%; margin: 20px 0; }
 
 /* ========================= CSS Custom Properties ========================= */
 :root {
+  /* ===== TEXT COLORS ===== */
+  --text-primary: #280003;
+  --text-secondary: #555555;
+  --text-muted: #888888;
+  --text-link: #9BC996;
+  --text-link-hover: #82b880;
+  --text-nav: #280003;
+  
   /* Farben */
   --primary-dark: #FFFFFF;
   --primary-teal: #00778F;
@@ -229,6 +237,9 @@ main img { max-width: 60%; margin: 20px 0; }
   --accent-blue: #009bb9;
   --bg-white: #FFFFFF;
   --bg-light: rgba(255, 255, 255, 0.9);
+  --bg-main: rgba(255, 255, 255, 0.75);
+  --bg-accordion: #EBE4E7;
+  --bg-accordion-content: #E4E4F2;
   
   /* Spacing */
   --space-xs: 0.5rem;
@@ -240,14 +251,13 @@ main img { max-width: 60%; margin: 20px 0; }
   --touch-target: 44px;
   
   /* ===== UNIFIED BOX SYSTEM ===== */
-  /* Einheitliche Werte für ALLE Boxen */
-  --box-gap: 1rem;                    /* Abstand zwischen Boxen */
-  --box-padding: 1rem;                /* Innenabstand */
-  --box-padding-lg: 1.5rem;           /* Größerer Innenabstand für Content */
-  --box-radius: 8px;                  /* Rundung */
-  --box-header-height: 50px;          /* Header Höhe (Touch-friendly) */
-  --box-border: 1px solid #ddd;       /* Border */
-  --box-header-bg: #f8f8f8;           /* Header Hintergrund */
+  --box-gap: 1rem;
+  --box-padding: 1rem;
+  --box-padding-lg: 1.5rem;
+  --box-radius: 8px;
+  --box-header-height: 50px;
+  --box-border: 1px solid #ddd;
+  --box-header-bg: #f8f8f8;
   --box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
@@ -346,6 +356,7 @@ main img { max-width: 60%; margin: 20px 0; }
     min-height: var(--touch-target);
     display: inline-flex;
     align-items: center;
+    color: var(--text-nav);
   }
   
   .nav-item:not(.subscribe):active,
@@ -421,17 +432,20 @@ main img { max-width: 60%; margin: 20px 0; }
     backdrop-filter: blur(8px);
     box-shadow: var(--box-shadow);
     width: 100%;
+    color: var(--text-primary);
   }
   
   .info-box h3 {
     font-size: 1.1rem;
     margin-bottom: var(--space-xs);
+    color: var(--text-primary);
   }
   
   .info-box p {
     font-size: 0.95rem;
     line-height: 1.6;
     margin-bottom: var(--space-xs);
+    color: var(--text-primary);
   }
   
   .info-box p:last-child {
@@ -448,20 +462,27 @@ main img { max-width: 60%; margin: 20px 0; }
 
 /* ========================= Main Content Typography ========================= */
 @media screen and (max-width: 1024px) {
+  .main-content {
+    color: var(--text-primary);
+  }
+  
   .main-content h2 {
     font-size: 1.1rem;
     margin: 0 0 var(--space-xs) 0;
+    color: var(--primary-teal);
   }
   
   .main-content h3 {
     font-size: 1rem;
     margin: 0 0 var(--space-xs) 0;
+    color: var(--primary-teal);
   }
   
   .main-content p {
     font-size: 0.95rem;
     line-height: 1.6;
     margin-bottom: var(--space-xs);
+    color: var(--text-primary);
   }
   
   .main-content p:last-child {
@@ -471,10 +492,8 @@ main img { max-width: 60%; margin: 20px 0; }
 
 /* ============================================================================
    UNIFIED COLLABSIBLE SYSTEM
-   Alle ausklappbaren Elemente teilen dieselben Styles
    ============================================================================ */
 @media screen and (max-width: 1024px) {
-  /* ---- Basis-Collapsible Styles ---- */
   .section-wrapper,
   .coorganizer-wrapper,
   .info-box.collapsible,
@@ -486,7 +505,6 @@ main img { max-width: 60%; margin: 20px 0; }
     background: var(--bg-white);
   }
   
-  /* ---- Collapsible Header (Section, Co-Organizer, Info-Box) ---- */
   .section-header,
   .coorganizer-header,
   .info-box.collapsible .box-header {
@@ -498,8 +516,6 @@ main img { max-width: 60%; margin: 20px 0; }
     background: var(--box-header-bg);
     min-height: var(--box-header-height);
     width: 100%;
-    border-radius: var(--box-radius) var(--box-radius) 0 0;
-    border-bottom: 1px solid transparent;
   }
   
   .section-header:hover,
@@ -508,7 +524,6 @@ main img { max-width: 60%; margin: 20px 0; }
     background: #f0f0f0;
   }
   
-  /* ---- Collapsible Header Text ---- */
   .section-header h2,
   .section-header h3,
   .coorganizer-header h3,
@@ -520,10 +535,7 @@ main img { max-width: 60%; margin: 20px 0; }
     line-height: 1.4;
   }
   
-  /* ---- Toggle Icon ---- */
-  .section-header .toggle-icon,
-  .coorganizer-header .toggle-icon,
-  .info-box.collapsible .box-header .toggle-icon {
+  .toggle-icon {
     font-size: 0.8rem;
     color: var(--primary-teal);
     flex-shrink: 0;
@@ -531,7 +543,6 @@ main img { max-width: 60%; margin: 20px 0; }
     transition: transform 0.2s ease;
   }
   
-  /* ---- Collapsible Content Area ---- */
   .section-content,
   .coorganizer-body,
   .info-box.collapsible .box-content {
@@ -539,10 +550,9 @@ main img { max-width: 60%; margin: 20px 0; }
     padding: var(--box-padding-lg);
     background: var(--bg-white);
     width: 100%;
-    border-radius: 0 0 var(--box-radius) var(--box-radius);
+    color: var(--text-primary);
   }
   
-  /* ---- Expanded State ---- */
   .section-wrapper.expanded .section-header,
   .coorganizer-wrapper.expanded .coorganizer-header,
   .info-box.collapsible.expanded .box-header {
@@ -556,10 +566,9 @@ main img { max-width: 60%; margin: 20px 0; }
     display: block;
   }
   
-  /* ---- Rotated Icon ---- */
-  .section-wrapper.expanded .section-header .toggle-icon,
-  .coorganizer-wrapper.expanded .coorganizer-header .toggle-icon,
-  .info-box.collapsible.expanded .box-header .toggle-icon {
+  .section-wrapper.expanded .toggle-icon,
+  .coorganizer-wrapper.expanded .toggle-icon,
+  .info-box.collapsible.expanded .toggle-icon {
     transform: rotate(180deg);
   }
 }
@@ -570,33 +579,40 @@ main img { max-width: 60%; margin: 20px 0; }
     margin: 0;
   }
   
-  .coorganizer-body .info-box {
-    background: #f9f9f9;
-    padding: var(--box-padding-lg);
-    border-radius: var(--box-radius);
-    border-left: 3px solid var(--primary-teal);
-    margin: 0;
+  .coorganizer-body {
+    display: flex;
+    flex-direction: column;
+    gap: var(--box-gap);
+    color: var(--text-primary);
   }
-}
   
   .coorganizer-body .info-box {
     background: #f9f9f9;
     padding: var(--box-padding-lg);
     border-radius: var(--box-radius);
     border-left: 3px solid var(--primary-teal);
-    margin: 0; /* Wird vom Parent-Container gesteuert */
+    margin: 0;
+    color: var(--text-primary);
   }
 }
 
 /* ---- Info-Box Collapsible Content ---- */
-/* ========================= Info-Box Collapsible ========================= */
 @media screen and (max-width: 1024px) {
+  .info-box.collapsible {
+    margin: 0;
+  }
+  
   .info-box.collapsible .box-content p,
   .info-box.collapsible .box-content ul,
   .info-box.collapsible .box-content ol {
     margin-bottom: var(--space-xs);
     font-size: 0.95rem;
     line-height: 1.6;
+    color: var(--text-primary);
+  }
+  
+  .info-box.collapsible .box-content p:last-child {
+    margin-bottom: 0;
   }
   
   .info-box.collapsible .box-content ul,
@@ -608,7 +624,7 @@ main img { max-width: 60%; margin: 20px 0; }
 /* ---- Section Wrapper in Main Content ---- */
 @media screen and (max-width: 1024px) {
   .main-content .section-wrapper {
-    margin: 0; /* Wird vom Parent-Container gesteuert */
+    margin: 0;
   }
   
   .main-content .section-wrapper h2,
@@ -623,7 +639,7 @@ main img { max-width: 60%; margin: 20px 0; }
    ============================================================================ */
 @media screen and (max-width: 1024px) {
   .accordion {
-    margin: 0; /* Wird vom Parent-Container gesteuert */
+    margin: 0;
   }
   
   .accordion-button {
@@ -635,18 +651,19 @@ main img { max-width: 60%; margin: 20px 0; }
     border-radius: var(--box-radius);
     border: none;
     border-left: 4px solid var(--primary-teal);
-    background: var(--box-header-bg);
+    background: var(--bg-accordion);
     cursor: pointer;
     -webkit-tap-highlight-color: rgba(0, 155, 185, 0.2);
     text-align: left;
     width: 100%;
-    color: #E0E0E0;
+    color: var(--text-primary);
     display: flex;
     align-items: center;
   }
   
   .accordion-button:hover {
-    background: #f0f0f0;
+    background: var(--primary-teal);
+    color: white;
   }
   
   .accordion-button::after {
@@ -673,13 +690,14 @@ main img { max-width: 60%; margin: 20px 0; }
   
   .accordion-content {
     padding: var(--box-padding-lg);
-    background: white;
+    background: var(--bg-accordion-content);
     border-radius: 0 0 var(--box-radius) var(--box-radius);
     border-left: 4px solid var(--accent-green);
     font-size: 0.95rem;
     line-height: 1.7;
     display: none;
     width: 100%;
+    color: var(--text-primary);
   }
   
   .accordion-content.show {
@@ -698,7 +716,6 @@ main img { max-width: 60%; margin: 20px 0; }
     color: var(--primary-teal);
   }
   
-  /* Accordion Wrapper für gruppierte Accordions */
   .accordion-group {
     display: flex;
     flex-direction: column;
@@ -729,13 +746,13 @@ main img { max-width: 60%; margin: 20px 0; }
     align-items: center;
     padding: 2px 4px;
     font-size: 0.95rem;
-    color: var(--primary-teal);
+    color: var(--text-link);
     text-decoration: none;
     word-break: break-word;
   }
   
   a:active {
-    color: var(--accent-green);
+    color: var(--text-link-hover);
     background: rgba(155, 201, 150, 0.1);
     border-radius: 4px;
   }
@@ -758,58 +775,289 @@ main img { max-width: 60%; margin: 20px 0; }
   .video-figure figcaption {
     font-size: 0.9rem;
     padding: 0 var(--space-xs);
+    color: var(--text-secondary);
   }
 }
 
-/* ========================= Dark Mode ========================= */
+/* ========================= Dark Mode (Mobile) ========================= */
 @media screen and (max-width: 1024px) and (prefers-color-scheme: dark) {
   :root {
+    /* ===== TEXT COLORS DARK MODE ===== */
+    --text-primary: #E0E0E0;
+    --text-secondary: #B0B0B0;
+    --text-muted: #808080;
+    --text-link: #9BC996;
+    --text-link-hover: #82b880;
+    --text-nav: #E0E0E0;
+    
+    /* Hintergrund-Farben Dark Mode */
     --primary-dark: #F5F0F2;
     --bg-white: #1E1E1E;
-    --bg-light: rgba(40, 40, 40, 0.95);
+    --bg-light: rgba(30, 30, 30, 0.95);
+    --bg-main: rgba(30, 30, 30, 0.85);
+    --bg-accordion: #2D2D2D;
+    --bg-accordion-content: #252525;
     --box-border: 1px solid #404040;
     --box-header-bg: #252525;
   }
   
   body {
     background-color: #121212;
-    color: #E0E0E0;
+    color: var(--text-primary);
   }
   
-  .main-content {
-    background: #1E1E1E;
-    color: #E0E0E0;
-  }
-  
-  .section-header:hover,
-  .coorganizer-header:hover,
-  .info-box.collapsible .box-header:hover,
-  .accordion-button:hover {
-    background: #333;
-  }
-  
-  .accordion-button {
-    background: #2D2D2D;
-    color: #E0E0E0;
-  }
-  
-  .accordion-content {
-    background: #1E1E1E;
-    color: #E0E0E0;
-  }
-  
+  /* Navigation */
   .main-nav {
     background: #121212;
     border-color: #333;
   }
   
   .nav-item:not(.subscribe) {
+    color: var(--text-nav);
+  }
+  
+  .nav-item:not(.subscribe):hover {
+    color: var(--accent-green);
+  }
+  
+  /* Main Content */
+  .main-content {
+    background: var(--bg-main);
+    color: var(--text-primary);
+  }
+  
+  /* Info-Boxen */
+  .info-box {
+    background: var(--bg-light);
+    color: var(--text-primary);
+  }
+  
+  .info-box h3 {
+    color: var(--text-primary);
+  }
+  
+  .info-box p {
+    color: var(--text-primary);
+  }
+  
+  /* Co-Organizer */
+  .coorganizer-body {
+    color: var(--text-primary);
+  }
+  
+  .coorganizer-body .info-box {
+    background: #252525;
+    color: var(--text-primary);
+  }
+  
+  /* Section Header */
+  .section-header,
+  .coorganizer-header,
+  .info-box.collapsible .box-header {
+    background: var(--box-header-bg);
+  }
+  
+  .section-header:hover,
+  .coorganizer-header:hover,
+  .info-box.collapsible .box-header:hover {
+    background: #333;
+  }
+  
+  /* Collapsible Content */
+  .section-content,
+  .coorganizer-body,
+  .info-box.collapsible .box-content {
+    background: var(--bg-white);
+    color: var(--text-primary);
+  }
+  
+  /* Accordion */
+  .accordion-button {
+    background: var(--bg-accordion);
+    color: var(--text-primary);
+  }
+  
+  .accordion-button:hover {
+    background: var(--primary-teal);
+    color: white;
+  }
+  
+  .accordion-button::after {
+    color: var(--accent-green);
+  }
+  
+  .accordion-content {
+    background: var(--bg-accordion-content);
+    color: var(--text-primary);
+  }
+  
+  /* Links */
+  a {
+    color: var(--text-link);
+  }
+  
+  a:active {
+    color: var(--text-link-hover);
+    background: rgba(155, 201, 150, 0.15);
+  }
+  
+  /* Videos */
+  .video-figure figcaption {
+    color: var(--text-secondary);
+  }
+  
+  /* Side Info */
+  .side-info {
+    color: var(--text-primary);
+  }
+}
+
+/* ==========================================================================
+   DESKTOP DARK MODE - Für Bildschirme über 1024px
+   ========================================================================== */
+@media screen and (min-width: 1025px) and (prefers-color-scheme: dark) {
+  /* Hintergrund */
+  body {
+    background-color: #121212;
+    color: #E0E0E0;
+  }
+  
+  /* Navigation */
+  .main-nav {
+    border-bottom-color: #333;
+  }
+  
+  .main-nav .nav-item:not(.subscribe) {
+    color: #E0E0E0;
+  }
+  
+  .main-nav .nav-item:not(.subscribe):hover,
+  .main-nav .nav-item:not(.subscribe).active {
+    color: #9BC996;
+  }
+  
+  /* Main Content */
+  .main-content {
+    background: rgba(30, 30, 30, 0.85);
+    backdrop-filter: blur(4px);
+    color: #E0E0E0;
+  }
+  
+  .main-content h1,
+  .main-content h2,
+  .main-content h3 {
+    color: #009bb9;
+  }
+  
+  .main-content p,
+  .main-content li {
+    color: #E0E0E0;
+  }
+  
+  /* Info-Boxen (Side Info) */
+  .side-info {
+    color: #E0E0E0;
+  }
+  
+  .info-box {
+    background: rgba(40, 40, 40, 0.8);
+    color: #E0E0E0;
+    border: 1px solid #404040;
+  }
+  
+  .info-box h3 {
+    color: #E0E0E0;
+  }
+  
+  .info-box p {
+    color: #E0E0E0;
+  }
+  
+  .box-1:hover,
+  .box-2:hover,
+  .box-3:hover,
+  .box-4:hover {
+    border-color: #9BC996;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  }
+  
+  /* Accordion */
+  .accordion-button {
+    background-color: #2D2D2D;
+    color: #E0E0E0;
+    border-left-color: #00778F;
+  }
+  
+  .accordion-button:hover {
+    background-color: #23748A;
+    color: white;
+  }
+  
+  .accordion-button.active {
+    background-color: #009bb9;
+    color: #FEF9FF;
+    border-left-color: #9BC996;
+  }
+  
+  .accordion-content {
+    background-color: #252525;
+    color: #E0E0E0;
+    border-left-color: #9BC996;
+  }
+  
+  /* Links */
+  a {
+    color: #9BC996;
+  }
+  
+  a:hover {
+    color: #82b880;
+  }
+  
+  /* Videos */
+  .video-figure figcaption {
+    color: #B0B0B0;
+  }
+  
+  /* Typography */
+  h1,
+  h2,
+  h3 {
+    color: #009bb9;
+  }
+  
+  /* Logo */
+  .logo h1 {
+    color: #F5F0F2;
+  }
+  
+  /* Co-Organizer */
+  .coorganizer-body {
     color: #E0E0E0;
   }
   
   .coorganizer-body .info-box {
     background: #252525;
     color: #E0E0E0;
+    border-left-color: #00778F;
+  }
+  
+  /* Page Layout */
+  .page-layout {
+    /* Optional: Hintergrund für Desktop anpassen */
+  }
+  
+  /* Links in Content */
+  .accordion-content a,
+  .info-box a,
+  .main-content a {
+    color: #9BC996;
+  }
+  
+  .accordion-content a:hover,
+  .info-box a:hover,
+  .main-content a:hover {
+    color: #82b880;
   }
 }
 
@@ -822,4 +1070,12 @@ main img { max-width: 60%; margin: 20px 0; }
     transition-duration: 0.01ms !important;
   }
 }
+
+@media screen and (min-width: 1025px) and (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
 }
