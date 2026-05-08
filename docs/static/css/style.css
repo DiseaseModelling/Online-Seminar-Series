@@ -913,7 +913,7 @@ main img { max-width: 60%; margin: 20px 0; }
 /* ==========================================================================
    DESKTOP DARK MODE - Für Bildschirme über 1024px
    ========================================================================== */
-@media screen and (min-width: 1025px) and (prefers-color-scheme: dark) {
+@media screen and (min-width: 1280px) and (prefers-color-scheme: dark) {
   /* Hintergrund */
   body {
     background-color: #121212;
