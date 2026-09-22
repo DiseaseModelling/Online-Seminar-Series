@@ -55,12 +55,12 @@ h3 { font-size: 1.2rem;
 }
 
 a { font-size: 1.2rem;
-  color: #3B0402 /*#9BC996*/;
+  color: #61051B /*#9BC996*/;
   text-decoration: none;
 }
 a:hover {
   text-decoration: underline;
-  color: #3B0402 /*#9BC996*/;
+  color: #61051B /*#9BC996*/;
 }
 /*======================== Canvas als Hintergrund ================== */
 #network-bg {
@@ -96,16 +96,16 @@ a:hover {
   white-space: nowrap;
 }
 .main-nav .nav-item:not(.subscribe):hover {
-  color: #3B0402 /*#9BC996*/;
+  color: #61051B /*#9BC996*/;
 }
 .main-nav .nav-item:not(.subscribe).active{
-  color: #3B0402 /*#9BC996*/;
+  color: #61051B /*#9BC996*/;
 }
 .subscribe {
 margin-left: auto;
 }
 .subscribe {
-background-color: #3B0402 /*#9BC996;   /* grün */
+background-color: #61051B /*#9BC996;   /* grün */
 color: #ffffff;              /* weiße Schrift */
 padding: 8px 16px;
 border-radius: 20px;         /* abgerundete Ecken */
@@ -156,7 +156,7 @@ font-size: 0.95rem;
 .box-3:hover,
 .box-4:hover {
 box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-border-color: #3B0402 /* #9BC996;  /* optional: Rahmenfarbe beim Hover ändern */
+border-color: #61051B /* #9BC996;  /* optional: Rahmenfarbe beim Hover ändern */
 }
 
 /* ========================= Dropdown / Accordion ========================= */
@@ -225,14 +225,14 @@ main img { max-width: 60%; margin: 20px 0; }
   --text-primary: #25282A;
   --text-secondary: #555555;
   --text-muted: #888888;
-  --text-link: #3B0402 /*#9BC996*/;
+  --text-link: #61051B /*#9BC996*/;
   --text-link-hover: #4E0415;
   --text-nav: #25282A;
   
   /* Farben */
   --primary-dark: #FFFFFF;
   --primary-teal: #00778F;
-  --accent-green: #3B0402 /*#9BC996*/;
+  --accent-green: #61051B /*#9BC996*/;
   --accent-green-dark: #4E0415;
   --accent-blue: #009bb9;
   --bg-white: #FFFFFF;
