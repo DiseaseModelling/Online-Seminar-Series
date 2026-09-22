@@ -132,7 +132,7 @@ white-space: nowrap;
 transition: background-color 0.2s ease, transform 0.15s ease;
 }
 .subscribe:hover {
-background-color: #260A03;   /* etwas dunkler */
+background-color: #00778F;   /* etwas dunkler */
 transform: translateY(-1px);
 }
 /* ========================== Boxen =================*/
