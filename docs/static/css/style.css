@@ -96,7 +96,7 @@ a:hover {
   white-space: nowrap;
 }
 .main-nav .nav-item:not(.subscribe):hover {
-  color: #61051B /*#9BC996*/;
+  color: #260A03 /*#9BC996*/;
 }
 .main-nav .nav-item:not(.subscribe).active{
   color: #61051B /*#9BC996*/;
@@ -115,7 +115,7 @@ white-space: nowrap;
 transition: background-color 0.2s ease, transform 0.15s ease;
 }
 .subscribe:hover {
-background-color: #A33A4A;   /* etwas dunkler */
+background-color: #260A03;   /* etwas dunkler */
 transform: translateY(-1px);
 }
 /* ========================== Boxen =================*/
@@ -226,7 +226,7 @@ main img { max-width: 60%; margin: 20px 0; }
   --text-secondary: #555555;
   --text-muted: #888888;
   --text-link: #61051B /*#9BC996*/;
-  --text-link-hover: #4E0415;
+  --text-link-hover: #61051B;
   --text-nav: #25282A;
   
   /* Farben */
@@ -784,7 +784,7 @@ main img { max-width: 60%; margin: 20px 0; }
     --text-primary: #E0E0E0;
     --text-secondary: #B0B0B0;
     --text-muted: #808080;
-    --text-link: #9BC996;
+    --text-link: #61051B;
     --text-link-hover: #82b880;
     --text-nav: #E0E0E0;
     
@@ -931,7 +931,7 @@ main img { max-width: 60%; margin: 20px 0; }
   
   .main-nav .nav-item:not(.subscribe):hover,
   .main-nav .nav-item:not(.subscribe).active {
-    color: #9BC996;
+    color: #61051B;
   }
   
   /* Main Content */
@@ -975,7 +975,7 @@ main img { max-width: 60%; margin: 20px 0; }
   .box-2:hover,
   .box-3:hover,
   .box-4:hover {
-    border-color: #9BC996;
+    border-color: #61051B;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
   }
   
@@ -994,22 +994,22 @@ main img { max-width: 60%; margin: 20px 0; }
   .accordion-button.active {
     background-color: #009bb9;
     color: #FEF9FF;
-    border-left-color: #9BC996;
+    border-left-color: #61051B;
   }
   
   .accordion-content {
     background-color: #252525;
     color: #E0E0E0;
-    border-left-color: #9BC996;
+    border-left-color: #61051B;
   }
   
   /* Links */
   a {
-    color: #9BC996;
+    color: #61051B;
   }
   
   a:hover {
-    color: #82b880;
+    color: #3B0402;
   }
   
   /* Videos */
@@ -1049,13 +1049,13 @@ main img { max-width: 60%; margin: 20px 0; }
   .accordion-content a,
   .info-box a,
   .main-content a {
-    color: #9BC996;
+    color: #61051B;
   }
   
   .accordion-content a:hover,
   .info-box a:hover,
   .main-content a:hover {
-    color: #82b880;
+    color: #3B0402;
   }
 }
 
