@@ -3,7 +3,7 @@ body {
   font-family: 'Inter', sans-serif;
   font-weight: 200;
   background-color: #FFFFFF;
-  color: #280003;
+  color: #25282A;
   line-height: 1.6;
   margin: 0;          /* statt auto */
 }
@@ -55,7 +55,7 @@ h3 { font-size: 1.2rem;
 }
 
 a { font-size: 1.2rem;
-  color: #A33A4A/*#9BC996*/;
+  color: #A33A4A /*#9BC996*/;
   text-decoration: none;
 }
 a:hover {
@@ -90,7 +90,7 @@ a:hover {
   font-size: 0.95rem;
 }
 .main-nav .nav-item:not(.subscribe) {
-  color:  #280003;
+  color:  #25282A;
   padding-bottom: 8px;
   cursor: pointer;
   white-space: nowrap;
@@ -142,7 +142,7 @@ flex: 1;
 display: flex;
 flex-direction: column;
 gap: 1.5rem;
-color: #280003 ;
+color: #25282A ;
 }
 
 .info-box {
@@ -162,7 +162,7 @@ border-color: #A33A4A /* #9BC996;  /* optional: Rahmenfarbe beim Hover ändern *
 /* ========================= Dropdown / Accordion ========================= */
 .accordion-button {
   background-color: #EBE4E7;
-  color: #280003;
+  color: #25282A;
   cursor: pointer;
   padding: 10px 15px;
   width: 100%;
@@ -205,7 +205,7 @@ margin: 40px 0;
 .video-figure figcaption {
 text-align: center;
 font-weight: bold;
-color:  #216E82; /* dein Lila */
+color:  #216E82; /* Lila ???*/
 margin-top: 10px;
 font-size: 0.95rem;
 }
@@ -222,12 +222,12 @@ main img { max-width: 60%; margin: 20px 0; }
 /* ========================= CSS Custom Properties ========================= */
 :root {
   /* ===== TEXT COLORS ===== */
-  --text-primary: #280003;
+  --text-primary: #25282A;
   --text-secondary: #555555;
   --text-muted: #888888;
   --text-link: #A33A4A /*#9BC996*/;
   --text-link-hover: #4E0415;
-  --text-nav: #280003;
+  --text-nav: #25282A;
   
   /* Farben */
   --primary-dark: #FFFFFF;
