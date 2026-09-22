@@ -46,6 +46,16 @@ main {
 .logo-dark {
   display: none;
 }
+
+@media (prefers-color-scheme: dark) {
+  .logo-light {
+    display: none;
+  }
+
+  .logo-dark {
+    display: block;
+  }
+}
 /* ========================= Typografie ========================= */
 h1 {
   font-family: 'Inter', sans-serif;
@@ -806,14 +816,6 @@ main img { max-width: 60%; margin: 20px 0; }
     --box-header-bg: #252525;
   }
   
-  .logo-light {
-        display: none;
-  }
-
-  .logo-dark {
-        display: block;
-  } 
-  
   body {
     background-color: #121212;
     color: var(--text-primary);
@@ -933,13 +935,6 @@ main img { max-width: 60%; margin: 20px 0; }
   body {
     background-color: #121212;
     color: #E0E0E0;
-  }
-  .logo-light {
-        display: none;
-  }
-
-  .logo-dark {
-        display: block;
   }
   
   /* Navigation */
