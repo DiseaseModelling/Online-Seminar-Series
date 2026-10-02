@@ -143,8 +143,8 @@ margin: 50px auto;
 padding: 0 40px;
 
 display: grid;
-grid-template-columns: 380px 1fr 320px;
-gap: 4rem;
+grid-template-columns: 280px minmax(0, 1fr) 300px;
+gap: 2.5rem;
 align-items: start;
 }
 
