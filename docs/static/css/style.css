@@ -171,7 +171,11 @@ font-size: 0.95rem;
 .box-1:hover,
 .box-2:hover,
 .box-3:hover,
-.box-4:hover {
+.box-4:hover,
+.box-5:hover,
+.box-6:hover,
+.box-7:hover,
+{
 box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 border-color: #61051B /* #9BC996;  /* optional: Rahmenfarbe beim Hover ändern */
 }
@@ -474,7 +478,8 @@ main img { max-width: 60%; margin: 20px 0; }
   .box-3,
   .box-4, 
   .box-5,
-  .box-6
+  .box-6,
+  .box-7
   {
     border: 1px solid rgba(0, 119, 143, 0.2);
   }
