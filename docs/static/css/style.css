@@ -1000,7 +1000,11 @@ main img { max-width: 60%; margin: 20px 0; }
   .box-1:hover,
   .box-2:hover,
   .box-3:hover,
-  .box-4:hover {
+  .box-4:hover,
+  .box-5:hover,
+  .box-6:hover,
+  .box-7:hover,
+  {
     border-color: #61051B;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
   }
