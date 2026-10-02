@@ -131,8 +131,9 @@ text-decoration: none;
 white-space: nowrap;
 transition: background-color 0.2s ease, transform 0.15s ease;
 }
+
 .subscribe:hover {
-background-color: #00778F;   /* etwas dunkler */
+background-color: #7B2832;   /* etwas dunkler */
 transform: translateY(-1px);
 }
 /* ========================== Boxen =================*/
@@ -174,7 +175,7 @@ font-size: 0.95rem;
 .box-4:hover,
 .box-5:hover,
 .box-6:hover,
-.box-7:hover,
+.box-7:hover
 {
 box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 border-color: #61051B /* #9BC996;  /* optional: Rahmenfarbe beim Hover ändern */
