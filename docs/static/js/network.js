@@ -22,13 +22,14 @@ const nodes = [];
 for (let i = 0; i < NUM_NODES; i++) {
   nodes.push({
     x: canvas.width / 2,
-    y: canvas.height /2,
+    y: canvas.height / 2,
 
     targetX: Math.random() * canvas.width,
-	targetY: Math.random() * canvas.height,
+    targetY: Math.random() * canvas.height,
 
     progress: 0,
-    size: Math.random() < 0.1 ? 3.5 : 1.5
+    size: Math.random() < 0.1 ? 3.5 : 1.5,
+    seed: Math.random() * Math.PI * 2
   });
 }
 
@@ -42,9 +43,7 @@ window.addEventListener("scroll", () => {
 // ================= UPDATE =================
 function update() {
   nodes.forEach(node => {
-
-    
-    if (node.progress < 1) {
+    if (node.progress < 0.9999) {
       node.progress += (1 - node.progress) * GROWTH_SPEED;
 
       node.x =
@@ -54,10 +53,8 @@ function update() {
       node.y =
         canvas.height / 2 +
         (node.targetY - canvas.height / 2) * node.progress;
-    }
-
-    // Bewegung
-    else {
+    } else {
+      node.progress = 1;
       node.x += Math.sin(Date.now() * 0.001 + node.seed) * 0.1;
       node.y += Math.cos(Date.now() * 0.001 + node.seed) * 0.1;
     }
@@ -68,7 +65,6 @@ function update() {
 function drawLines() {
   for (let i = 0; i < nodes.length; i++) {
     for (let j = i + 1; j < nodes.length; j++) {
-
       const dx = nodes[i].x - nodes[j].x;
       const dy = nodes[i].y - nodes[j].y;
       const dist = Math.sqrt(dx * dx + dy * dy);
@@ -104,13 +100,121 @@ function draw() {
 
   ctx.save();
 
-  const tilt = scroll * 0.0003; // 
-  ctx.transform( 1, 0, Math.sin(tilt) * 0.05, 1, 0, 0 ); 
-  drawLines(); 
-  drawNodes(); 
-  ctx.restore(); }
+  const tilt = scroll * 0.0003;
+  ctx.transform(1, 0, Math.sin(tilt) * 0.05, 1, 0, 0);
+  drawLines();
+  drawNodes();
+  ctx.restore();
+}
 
-  
+// ========================================================================== 
+// UI INTERACTIONS
+// ========================================================================== 
+
+// ================= SECTION WRAPPERS =================
+document.querySelectorAll('.section-wrapper').forEach(wrapper => {
+  const header = wrapper.querySelector('.section-header');
+  const content = wrapper.querySelector('.section-content');
+
+  if (!header || !content) return;
+
+  header.setAttribute('tabindex', '0');
+  header.setAttribute('role', 'button');
+  header.setAttribute('aria-expanded', wrapper.classList.contains('expanded') ? 'true' : 'false');
+
+  const toggle = () => {
+    wrapper.classList.toggle('expanded');
+    header.setAttribute('aria-expanded', wrapper.classList.contains('expanded') ? 'true' : 'false');
+  };
+
+  header.addEventListener('click', toggle);
+  header.addEventListener('keydown', event => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      toggle();
+    }
+  });
+});
+
+// ================= COLLAPSIBLE INFO BOXES =================
+document.querySelectorAll('.info-box.collapsible').forEach(box => {
+  const header = box.querySelector('.box-header');
+  const content = box.querySelector('.box-content');
+
+  if (!header || !content) return;
+
+  header.setAttribute('tabindex', '0');
+  header.setAttribute('role', 'button');
+  header.setAttribute('aria-expanded', box.classList.contains('expanded') ? 'true' : 'false');
+
+  const toggle = () => {
+    box.classList.toggle('expanded');
+    header.setAttribute('aria-expanded', box.classList.contains('expanded') ? 'true' : 'false');
+  };
+
+  header.addEventListener('click', toggle);
+  header.addEventListener('keydown', event => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      toggle();
+    }
+  });
+});
+
+// ================= SPEAKER ACCORDIONS =================
+document.querySelectorAll('.accordion-button').forEach(button => {
+  const content = button.nextElementSibling;
+  if (!content || !content.classList.contains('accordion-content')) return;
+
+  button.setAttribute('aria-expanded', button.classList.contains('active') ? 'true' : 'false');
+
+  button.addEventListener('click', () => {
+    const isActive = button.classList.contains('active');
+
+    // Preserve the Online-Seminar page behaviour: within a section, only one
+    // speaker accordion is open at a time. On Previous Seminars, accordions
+    // remain independent, matching the previous implementation.
+    const sectionContent = button.closest('.section-content');
+    if (sectionContent && !isActive) {
+      sectionContent.querySelectorAll('.accordion-button').forEach(otherButton => {
+        if (otherButton === button) return;
+        const otherContent = otherButton.nextElementSibling;
+        otherButton.classList.remove('active');
+        otherButton.setAttribute('aria-expanded', 'false');
+        if (otherContent) otherContent.style.display = 'none';
+      });
+    }
+
+    button.classList.toggle('active', !isActive);
+    button.setAttribute('aria-expanded', !isActive ? 'true' : 'false');
+    content.style.display = !isActive ? 'block' : 'none';
+  });
+});
+
+// ================= CO-ORGANIZER DISCLOSURES =================
+document.querySelectorAll('.organizer-button').forEach(button => {
+  const item = button.closest('.organizer-item');
+  const content = item?.querySelector('.organizer-content');
+  if (!item || !content) return;
+
+  button.setAttribute('aria-expanded', 'false');
+
+  button.addEventListener('click', () => {
+    const willOpen = button.getAttribute('aria-expanded') !== 'true';
+    const section = button.closest('.organizer-section');
+
+    // Keep this compact: opening one organizer closes the other organizer rows.
+    section?.querySelectorAll('.organizer-button').forEach(otherButton => {
+      if (otherButton === button) return;
+      otherButton.setAttribute('aria-expanded', 'false');
+      const otherContent = otherButton.closest('.organizer-item')?.querySelector('.organizer-content');
+      if (otherContent) otherContent.style.display = 'none';
+    });
+
+    button.setAttribute('aria-expanded', willOpen ? 'true' : 'false');
+    content.style.display = willOpen ? 'block' : 'none';
+  });
+});
 
 // ================= LOOP =================
 function animate() {
