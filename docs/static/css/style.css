@@ -1,30 +1,34 @@
 /* ========================= Grundlayout ========================= */
 body {
   font-family: 'Inter', sans-serif;
-  font-weight: 200;
+  font-weight: 400;
   background-color: #FFFFFF;
   color: #25282A;
   line-height: 1.6;
-  margin: 0;          /* statt auto */
+  margin: 0;
 }
+
 .wrapper {
-max-width: 1500px;
-margin: 0 auto;
-padding: 0 40px;
+  max-width: 1500px;
+  margin: 0 auto;
+  padding: 0 40px;
 }
+
 main {
   margin-top: 30px;
 }
+
 .logo {
-  display: flex;       /* nebeneinander anordnen */
-  align-items: center; /* vertikal zentrieren */
-  gap: 90px;           /* Abstand zwischen Logo & Titel */
+  display: flex;
+  align-items: center;
+  gap: 50px;
 }
 
 .logo img {
-  height: 160px;       /* Logo-Größe */
-  width: auto;         /* proportional */
+  height: 115px;
+  width: auto;
 }
+
 @font-face {
   font-family: 'IosevkaBold';
   src: url('../fonts/IosevkaTermSlabNerdFontMono-Bold.ttf') format('truetype');
@@ -32,13 +36,13 @@ main {
   font-style: normal;
 }
 
-/* Titel-Stil */
 .logo h1 {
-  font-family: 'IosevkaBold'; /*sans-serif;  /* eigener Font zuerst, dann Fallback */
-  margin: 0;           /* Abstand oben/unten entfernen */
-  font-size: 3.5rem;
-  line-height: 1.4; /* gewünschte Größe */
+  font-family: 'IosevkaBold', sans-serif;
+  margin: 0;
+  font-size: clamp(2.2rem, 3vw, 3rem);
+  line-height: 1.25;
 }
+
 .logo-light {
   display: block;
 }
@@ -56,30 +60,52 @@ main {
     display: block;
   }
 }
+
 /* ========================= Typografie ========================= */
 h1 {
   font-family: 'Inter', sans-serif;
   font-weight: 600;
-  color:  #00778F;
+  color: #00778F;
   margin-top: 1.5em;
-}
-h1 { font-size: 1.8rem; }
-h2 { font-size: 1.5rem; 
-   color: #00778F;
-}
-h3 { font-size: 1.2rem; 
-   color: #00778F;
+  font-size: 1.8rem;
 }
 
-a { font-size: 1.2rem;
-  color: #61051B /*#9BC996*/;
+h2 {
+  font-size: 1.5rem;
+  color: #00778F;
+}
+
+h3 {
+  font-size: 1.2rem;
+  color: #00778F;
+}
+
+a {
+  color: #00778F;
   text-decoration: none;
+  font-size: inherit;
+  transition: color 0.2s ease;
 }
+
 a:hover {
+  color: #005F72;
   text-decoration: underline;
-  color: #61051B /*#9BC996*/;
 }
-/*======================== Canvas als Hintergrund ================== */
+
+.info-box a,
+.accordion-content a,
+.organizer-content a {
+  font-size: 0.95rem;
+}
+
+a:focus-visible,
+button:focus-visible,
+[role="button"]:focus-visible {
+  outline: 3px solid #009bb9;
+  outline-offset: 3px;
+}
+
+/* ========================= Canvas als Hintergrund ========================= */
 #network-bg {
   position: fixed;
   top: 0;
@@ -88,16 +114,17 @@ a:hover {
   height: 100%;
   z-index: -1;
 }
+
 /* ========================= Topbar ========================= */
 .topbar {
   display: flex;
   align-items: center;
-  padding: 20px 0;
+  padding: 12px 0;
 }
 
 /* ========================= Navigation ========================= */
 .main-nav {
-  display: flex; 
+  display: flex;
   align-items: center;
   gap: 20px;
   max-width: 1200px;
@@ -106,46 +133,50 @@ a:hover {
   border-bottom: 1px solid #e0e0e0;
   font-size: 0.95rem;
 }
+
 .main-nav .nav-item:not(.subscribe) {
-  color:  #25282A;
+  color: #25282A;
   padding-bottom: 8px;
   cursor: pointer;
   white-space: nowrap;
 }
+
 .main-nav .nav-item:not(.subscribe):hover {
-  color: #260A03 /*#9BC996*/;
+  color: #260A03;
 }
-.main-nav .nav-item:not(.subscribe).active{
-  color: #61051B /*#9BC996*/;
+
+.main-nav .nav-item:not(.subscribe).active {
+  color: #61051B;
 }
+
 .subscribe {
-margin-left: auto;
-}
-.subscribe {
-background-color: #61051B /*#9BC996;   /* grün */
-color: #ffffff;              /* weiße Schrift */
-padding: 8px 16px;
-border-radius: 20px;         /* abgerundete Ecken */
-font-weight: 600;
-text-decoration: none;
-white-space: nowrap;
-transition: background-color 0.2s ease, transform 0.15s ease;
+  margin-left: auto;
+  background-color: #61051B;
+  color: #ffffff;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-weight: 600;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background-color 0.2s ease, transform 0.15s ease;
 }
 
 .subscribe:hover {
-background-color: #7B2832;   /* etwas dunkler */
-transform: translateY(-1px);
+  background-color: #7B2832;
+  color: #ffffff;
+  text-decoration: none;
+  transform: translateY(-1px);
 }
-/* ========================== Boxen =================*/
-.page-layout {
-max-width: 1500px;
-margin: 50px auto;
-padding: 0 40px;
 
-display: grid;
-grid-template-columns: 280px minmax(0, 1fr) 300px;
-gap: 2.5rem;
-align-items: start;
+/* ========================== Boxen ================= */
+.page-layout {
+  max-width: 1500px;
+  margin: 40px auto;
+  padding: 0 40px;
+  display: grid;
+  grid-template-columns: minmax(220px, 260px) minmax(0, 1fr) minmax(240px, 280px);
+  gap: clamp(1.75rem, 3vw, 3rem);
+  align-items: start;
 }
 
 .main-content {
@@ -156,29 +187,31 @@ align-items: start;
 }
 
 .side-info {
-flex: 1;
-display: flex;
-flex-direction: column;
-gap: 1.5rem;
-color: #25282A ;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  color: #25282A;
 }
 
 .info-box {
-padding: 1.2rem;
-border-radius: 6px;
-font-size: 0.95rem;
+  padding: 1.2rem;
+  border-radius: 6px;
+  font-size: 0.95rem;
 }
 
-.box-1:hover,
-.box-2:hover,
-.box-3:hover,
-.box-4:hover,
-.box-5:hover,
-.box-6:hover,
-.box-7:hover
-{
-box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-border-color: #61051B /* #9BC996;  /* optional: Rahmenfarbe beim Hover ändern */
+/* bewusst kein Hover auf nicht klickbaren Info-Boxen */
+
+/* ========================= Semester-Trennung ========================= */
+.main-content > h2 {
+  margin-top: 2.75rem;
+  margin-bottom: 1.25rem;
+  padding-bottom: 0.55rem;
+  border-bottom: 1px solid rgba(0, 119, 143, 0.25);
+}
+
+.main-content > h1 + h2 {
+  margin-top: 1.5rem;
 }
 
 /* ========================= Dropdown / Accordion ========================= */
@@ -197,13 +230,17 @@ border-color: #61051B /* #9BC996;  /* optional: Rahmenfarbe beim Hover ändern *
   margin-bottom: 5px;
   transition: background-color 0.2s ease;
 }
+
 .accordion-button:hover {
   background-color: #23748A;
+  color: #ffffff;
 }
+
 .accordion-button.active {
-  background-color: #009bb9; /* nach Klick */
+  background-color: #009bb9;
   color: #FEF9FF;
 }
+
 .accordion-content {
   display: none;
   padding: 10px 15px;
@@ -211,25 +248,104 @@ border-color: #61051B /* #9BC996;  /* optional: Rahmenfarbe beim Hover ändern *
   border-left: 2px solid #216E82;
   margin-bottom: 10px;
 }
-/* ==================== VIDEOS ========================================*/
+
+/* ========================= Co-Organizer: flache Disclosure-Liste ========================= */
+.organizer-section {
+  width: 100%;
+}
+
+.organizer-section > h3 {
+  margin: 0 0 0.45rem 0;
+}
+
+.organizer-item {
+  border-bottom: 1px solid rgba(0, 119, 143, 0.18);
+}
+
+.organizer-button {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.8rem 0.15rem;
+  border: 0;
+  background: transparent;
+  color: #25282A;
+  text-align: left;
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.95rem;
+  font-weight: 600;
+  transition: color 0.2s ease, background-color 0.2s ease, padding 0.2s ease;
+}
+
+.organizer-arrow {
+  flex-shrink: 0;
+  font-size: 0.9rem;
+  color: #00778F;
+  transition: transform 0.2s ease;
+}
+
+.organizer-button:hover {
+  color: #00778F;
+  background: rgba(0, 119, 143, 0.055);
+  padding-left: 0.4rem;
+  padding-right: 0.4rem;
+  border-radius: 4px;
+}
+
+.organizer-button[aria-expanded="true"] {
+  color: #00778F;
+}
+
+.organizer-button[aria-expanded="true"] .organizer-arrow {
+  transform: rotate(180deg);
+}
+
+.organizer-content {
+  display: none;
+  padding: 0.15rem 0.35rem 0.9rem 0.35rem;
+  color: #25282A;
+  font-size: 0.9rem;
+  line-height: 1.55;
+}
+
+.organizer-content.show {
+  display: block;
+}
+
+.organizer-content p {
+  margin: 0 0 0.55rem 0;
+}
+
+.organizer-content a {
+  color: #00778F;
+}
+
+.organizer-content a:hover {
+  color: #005F72;
+}
+
+/* ==================== VIDEOS ==================== */
 .content-video {
-width: 100%;
-max-width: 800px;
-display: block;
-margin: 30px auto;
-border-radius: 10px;
+  width: 100%;
+  max-width: 800px;
+  display: block;
+  margin: 30px auto;
+  border-radius: 10px;
 }
 
 .video-figure {
-margin: 40px 0;
+  margin: 40px 0;
 }
 
 .video-figure figcaption {
-text-align: center;
-font-weight: bold;
-color:  #216E82; /* Lila ???*/
-margin-top: 10px;
-font-size: 0.95rem;
+  text-align: center;
+  font-weight: bold;
+  color: #216E82;
+  margin-top: 10px;
+  font-size: 0.95rem;
 }
 
 /* ========================= Markdown Content ========================= */
@@ -241,20 +357,16 @@ main img { max-width: 60%; margin: 20px 0; }
    MOBILE STYLES - Modern, Touch-Friendly, Responsive
    ========================================================================== */
 
-/* ========================= CSS Custom Properties ========================= */
 :root {
-  /* ===== TEXT COLORS ===== */
   --text-primary: #25282A;
   --text-secondary: #555555;
   --text-muted: #888888;
-  --text-link: #61051B /*#9BC996*/;
+  --text-link: #61051B;
   --text-link-hover: #61051B;
   --text-nav: #25282A;
-  
-  /* Farben */
   --primary-dark: #FFFFFF;
   --primary-teal: #00778F;
-  --accent-green: #61051B /*#9BC996*/;
+  --accent-green: #61051B;
   --accent-green-dark: #4E0415;
   --accent-blue: #009bb9;
   --bg-white: #FFFFFF;
@@ -262,17 +374,11 @@ main img { max-width: 60%; margin: 20px 0; }
   --bg-main: rgba(255, 255, 255, 0.75);
   --bg-accordion: #EBE4E7;
   --bg-accordion-content: #E4E4F2;
-  
-  /* Spacing */
   --space-xs: 0.5rem;
   --space-sm: 1rem;
   --space-md: 1.5rem;
   --space-lg: 2rem;
-  
-  /* Touch Target */
   --touch-target: 44px;
-  
-  /* ===== UNIFIED BOX SYSTEM ===== */
   --box-gap: 1rem;
   --box-padding: 1rem;
   --box-padding-lg: 1.5rem;
@@ -283,25 +389,24 @@ main img { max-width: 60%; margin: 20px 0; }
   --box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
-/* ========================= Grundlegendes Mobile Reset ========================= */
 @media screen and (max-width: 1024px) {
   *,
   *::before,
   *::after {
     box-sizing: border-box;
   }
-  
+
   html {
     font-size: 16px;
     -webkit-text-size-adjust: 100%;
   }
-  
+
   body {
     font-size: 1rem;
     line-height: 1.6;
     overflow-x: hidden;
   }
-  
+
   body,
   .wrapper,
   .topbar,
@@ -311,31 +416,30 @@ main img { max-width: 60%; margin: 20px 0; }
   }
 }
 
-/* ========================= Wrapper & Topbar ========================= */
 @media screen and (max-width: 1024px) {
   .wrapper {
     padding: 0 var(--space-sm);
     max-width: 100%;
     width: 100%;
   }
-  
+
   .topbar {
     padding: var(--space-sm) 0;
     width: 100%;
   }
-  
+
   .logo {
     flex-direction: column;
     align-items: flex-start;
     gap: var(--space-sm);
     text-align: left;
   }
-  
+
   .logo img {
     height: 80px;
     width: auto;
   }
-  
+
   .logo h1 {
     font-size: 1.4rem;
     line-height: 1.3;
@@ -344,7 +448,6 @@ main img { max-width: 60%; margin: 20px 0; }
   }
 }
 
-/* ========================= Navigation ========================= */
 @media screen and (max-width: 1024px) {
   .main-nav {
     position: relative;
@@ -363,11 +466,11 @@ main img { max-width: 60%; margin: 20px 0; }
     width: 100%;
     max-width: 100%;
   }
-  
+
   .main-nav::-webkit-scrollbar {
     display: none;
   }
-  
+
   .nav-item:not(.subscribe) {
     flex-shrink: 0;
     padding: 8px 10px;
@@ -380,13 +483,13 @@ main img { max-width: 60%; margin: 20px 0; }
     align-items: center;
     color: var(--text-nav);
   }
-  
+
   .nav-item:not(.subscribe):active,
   .nav-item:not(.subscribe).active {
     border-bottom-color: var(--accent-green);
     color: var(--accent-green);
   }
-  
+
   .subscribe {
     flex-shrink: 0;
     margin-left: auto;
@@ -400,7 +503,6 @@ main img { max-width: 60%; margin: 20px 0; }
   }
 }
 
-/* ========================= Page Layout ========================= */
 @media screen and (max-width: 1024px) {
   .page-layout {
     display: flex;
@@ -411,20 +513,20 @@ main img { max-width: 60%; margin: 20px 0; }
     max-width: 100%;
     width: 100%;
   }
-  
+
   .left-info,
   .main-content,
   .side-info {
     width: 100%;
   }
-  
+
   .left-info {
     order: 1;
     display: flex;
     flex-direction: column;
     gap: var(--box-gap);
   }
-  
+
   .main-content {
     order: 2;
     background: var(--bg-white);
@@ -435,7 +537,7 @@ main img { max-width: 60%; margin: 20px 0; }
     flex-direction: column;
     gap: var(--box-gap);
   }
-  
+
   .side-info {
     order: 3;
     display: flex;
@@ -444,7 +546,6 @@ main img { max-width: 60%; margin: 20px 0; }
   }
 }
 
-/* ========================= Info-Boxen (nicht collapsible) ========================= */
 @media screen and (max-width: 1024px) {
   .info-box {
     padding: var(--box-padding-lg);
@@ -456,72 +557,69 @@ main img { max-width: 60%; margin: 20px 0; }
     width: 100%;
     color: var(--text-primary);
   }
-  
+
   .info-box h3 {
     font-size: 1.1rem;
     margin-bottom: var(--space-xs);
     color: var(--text-primary);
   }
-  
+
   .info-box p {
     font-size: 0.95rem;
     line-height: 1.6;
     margin-bottom: var(--space-xs);
     color: var(--text-primary);
   }
-  
+
   .info-box p:last-child {
     margin-bottom: 0;
   }
-  
+
   .box-1,
   .box-2,
   .box-3,
-  .box-4, 
+  .box-4,
   .box-5,
   .box-6,
-  .box-7
-  {
+  .box-7 {
     border: 1px solid rgba(0, 119, 143, 0.2);
   }
 }
 
-/* ========================= Main Content Typography ========================= */
 @media screen and (max-width: 1024px) {
   .main-content {
     color: var(--text-primary);
   }
-  
+
   .main-content h2 {
     font-size: 1.1rem;
     margin: 0 0 var(--space-xs) 0;
     color: var(--primary-teal);
   }
-  
+
   .main-content h3 {
     font-size: 1rem;
     margin: 0 0 var(--space-xs) 0;
     color: var(--primary-teal);
   }
-  
+
   .main-content p {
     font-size: 0.95rem;
     line-height: 1.6;
     margin-bottom: var(--space-xs);
     color: var(--text-primary);
   }
-  
+
   .main-content p:last-child {
     margin-bottom: 0;
   }
 }
 
 /* ============================================================================
-   UNIFIED COLLABSIBLE SYSTEM
+   UNIFIED COLLAPSIBLE SYSTEM
    ============================================================================ */
 @media screen and (max-width: 1024px) {
   .section-wrapper,
-  .coorganizer-wrapper,
   .info-box.collapsible,
   .accordion {
     border: var(--box-border);
@@ -530,9 +628,8 @@ main img { max-width: 60%; margin: 20px 0; }
     max-width: 100%;
     background: var(--bg-white);
   }
-  
+
   .section-header,
-  .coorganizer-header,
   .info-box.collapsible .box-header {
     display: flex;
     justify-content: space-between;
@@ -543,16 +640,14 @@ main img { max-width: 60%; margin: 20px 0; }
     min-height: var(--box-header-height);
     width: 100%;
   }
-  
+
   .section-header:hover,
-  .coorganizer-header:hover,
   .info-box.collapsible .box-header:hover {
     background: #f0f0f0;
   }
-  
+
   .section-header h2,
   .section-header h3,
-  .coorganizer-header h3,
   .info-box.collapsible .box-header h3 {
     margin: 0;
     font-size: 1rem;
@@ -560,7 +655,7 @@ main img { max-width: 60%; margin: 20px 0; }
     flex: 1;
     line-height: 1.4;
   }
-  
+
   .toggle-icon {
     font-size: 0.8rem;
     color: var(--primary-teal);
@@ -568,9 +663,8 @@ main img { max-width: 60%; margin: 20px 0; }
     margin-left: var(--space-sm);
     transition: transform 0.2s ease;
   }
-  
+
   .section-content,
-  .coorganizer-body,
   .info-box.collapsible .box-content {
     display: none;
     padding: var(--box-padding-lg);
@@ -578,54 +672,29 @@ main img { max-width: 60%; margin: 20px 0; }
     width: 100%;
     color: var(--text-primary);
   }
-  
+
   .section-wrapper.expanded .section-header,
-  .coorganizer-wrapper.expanded .coorganizer-header,
   .info-box.collapsible.expanded .box-header {
     border-bottom: 1px solid #ddd;
     border-radius: var(--box-radius) var(--box-radius) 0 0;
   }
-  
+
   .section-wrapper.expanded .section-content,
-  .coorganizer-wrapper.expanded .coorganizer-body,
   .info-box.collapsible.expanded .box-content {
     display: block;
   }
-  
+
   .section-wrapper.expanded .toggle-icon,
-  .coorganizer-wrapper.expanded .toggle-icon,
   .info-box.collapsible.expanded .toggle-icon {
     transform: rotate(180deg);
   }
 }
 
-/* ---- Co-Organizer Specific ---- */
-@media screen and (max-width: 1024px) {
-  .coorganizer-wrapper {
-    margin: 0;
-  }
-  
-/* RICHTIG (jetzt) */
-.coorganizer-body {
-  display: none;  /* Versteckt standardmäßig */
-}
-  
-  .coorganizer-body .info-box {
-    background: #f9f9f9;
-    padding: var(--box-padding-lg);
-    border-radius: var(--box-radius);
-    border-left: 3px solid var(--primary-teal);
-    margin: 0;
-    color: var(--text-primary);
-  }
-}
-
-/* ---- Info-Box Collapsible Content ---- */
 @media screen and (max-width: 1024px) {
   .info-box.collapsible {
     margin: 0;
   }
-  
+
   .info-box.collapsible .box-content p,
   .info-box.collapsible .box-content ul,
   .info-box.collapsible .box-content ol {
@@ -634,23 +703,22 @@ main img { max-width: 60%; margin: 20px 0; }
     line-height: 1.6;
     color: var(--text-primary);
   }
-  
+
   .info-box.collapsible .box-content p:last-child {
     margin-bottom: 0;
   }
-  
+
   .info-box.collapsible .box-content ul,
   .info-box.collapsible .box-content ol {
     padding-left: var(--space-md);
   }
 }
 
-/* ---- Section Wrapper in Main Content ---- */
 @media screen and (max-width: 1024px) {
   .main-content .section-wrapper {
     margin: 0;
   }
-  
+
   .main-content .section-wrapper h2,
   .main-content .section-wrapper h3 {
     font-size: 1rem;
@@ -665,7 +733,7 @@ main img { max-width: 60%; margin: 20px 0; }
   .accordion {
     margin: 0;
   }
-  
+
   .accordion-button {
     position: relative;
     min-height: var(--touch-target);
@@ -684,12 +752,12 @@ main img { max-width: 60%; margin: 20px 0; }
     display: flex;
     align-items: center;
   }
-  
+
   .accordion-button:hover {
     background: var(--primary-teal);
     color: white;
   }
-  
+
   .accordion-button::after {
     content: '▼';
     position: absolute;
@@ -700,18 +768,18 @@ main img { max-width: 60%; margin: 20px 0; }
     transition: transform 0.2s ease;
     color: var(--primary-teal);
   }
-  
+
   .accordion-button.active::after {
     transform: translateY(-50%) rotate(180deg);
   }
-  
+
   .accordion-button.active {
     background: var(--accent-blue);
     color: white;
     border-left-color: var(--accent-green);
     border-radius: var(--box-radius) var(--box-radius) 0 0;
   }
-  
+
   .accordion-content {
     padding: var(--box-padding-lg);
     background: var(--bg-accordion-content);
@@ -723,28 +791,48 @@ main img { max-width: 60%; margin: 20px 0; }
     width: 100%;
     color: var(--text-primary);
   }
-  
+
   .accordion-content.show {
     display: block;
   }
-  
+
   .accordion-content p {
     margin-bottom: var(--space-xs);
   }
-  
+
   .accordion-content p:last-child {
     margin-bottom: 0;
   }
-  
+
   .accordion-content a {
     color: var(--primary-teal);
   }
-  
+
   .accordion-group {
     display: flex;
     flex-direction: column;
     gap: var(--box-gap);
     width: 100%;
+  }
+
+  /* Organizer bleiben bewusst flach statt Card-in-Card */
+  .organizer-section {
+    border: 0;
+    background: transparent;
+  }
+
+  .organizer-item {
+    border-bottom-color: rgba(0, 119, 143, 0.22);
+  }
+
+  .organizer-button {
+    min-height: var(--touch-target);
+    padding: 0.75rem 0.15rem;
+    font-size: 0.95rem;
+  }
+
+  .organizer-content {
+    padding: 0.2rem 0.25rem 0.9rem;
   }
 }
 
@@ -765,16 +853,19 @@ main img { max-width: 60%; margin: 20px 0; }
 /* ========================= Links ========================= */
 @media screen and (max-width: 1024px) {
   a {
-    min-height: var(--touch-target);
-    display: inline-flex;
-    align-items: center;
-    padding: 2px 4px;
     font-size: 0.95rem;
     color: var(--text-link);
     text-decoration: none;
     word-break: break-word;
   }
-  
+
+  .main-nav a,
+  .subscribe,
+  button,
+  .organizer-button {
+    min-height: var(--touch-target);
+  }
+
   a:active {
     color: var(--text-link-hover);
     background: rgba(155, 201, 150, 0.1);
@@ -790,12 +881,12 @@ main img { max-width: 60%; margin: 20px 0; }
     border-radius: var(--box-radius);
     margin: var(--space-md) 0;
   }
-  
+
   .video-figure {
     margin: var(--space-md) 0;
     width: 100%;
   }
-  
+
   .video-figure figcaption {
     font-size: 0.9rem;
     padding: 0 var(--space-xs);
@@ -805,16 +896,13 @@ main img { max-width: 60%; margin: 20px 0; }
 
 /* ========================= Dark Mode (Mobile) ========================= */
 @media screen and (max-width: 1024px) and (prefers-color-scheme: dark) {
-  :root {    
-    /* ===== TEXT COLORS DARK MODE ===== */
+  :root {
     --text-primary: #E0E0E0;
     --text-secondary: #B0B0B0;
     --text-muted: #808080;
-    --text-link: #61051B;
-    --text-link-hover: #82b880;
+    --text-link: #63C6D8;
+    --text-link-hover: #91DCE8;
     --text-nav: #E0E0E0;
-    
-    /* Hintergrund-Farben Dark Mode */
     --primary-dark: #F5F0F2;
     --bg-white: #1E1E1E;
     --bg-light: rgba(30, 30, 30, 0.95);
@@ -824,113 +912,110 @@ main img { max-width: 60%; margin: 20px 0; }
     --box-border: 1px solid #404040;
     --box-header-bg: #252525;
   }
-  
+
   body {
     background-color: #121212;
     color: var(--text-primary);
   }
-  
-  /* Navigation */
+
   .main-nav {
     background: #121212;
     border-color: #333;
   }
-  
+
   .nav-item:not(.subscribe) {
     color: var(--text-nav);
   }
-  
+
   .nav-item:not(.subscribe):hover {
     color: var(--accent-green);
   }
-  
-  /* Main Content */
+
   .main-content {
     background: var(--bg-main);
     color: var(--text-primary);
   }
-  
-  /* Info-Boxen */
+
   .info-box {
     background: var(--bg-light);
     color: var(--text-primary);
   }
-  
-  .info-box h3 {
-    color: var(--text-primary);
-  }
-  
+
+  .info-box h3,
   .info-box p {
     color: var(--text-primary);
   }
-  
-  /* Co-Organizer */
-  .coorganizer-body {
-    color: var(--text-primary);
-  }
-  
-  .coorganizer-body .info-box {
-    background: #252525;
-    color: var(--text-primary);
-  }
-  
-  /* Section Header */
+
   .section-header,
-  .coorganizer-header,
   .info-box.collapsible .box-header {
     background: var(--box-header-bg);
   }
-  
+
   .section-header:hover,
-  .coorganizer-header:hover,
   .info-box.collapsible .box-header:hover {
     background: #333;
   }
-  
-  /* Collapsible Content */
+
   .section-content,
-  .coorganizer-body,
   .info-box.collapsible .box-content {
     background: var(--bg-white);
     color: var(--text-primary);
   }
-  
-  /* Accordion */
+
   .accordion-button {
     background: var(--bg-accordion);
     color: var(--text-primary);
   }
-  
+
   .accordion-button:hover {
     background: var(--primary-teal);
     color: white;
   }
-  
+
   .accordion-button::after {
     color: var(--accent-green);
   }
-  
+
   .accordion-content {
     background: var(--bg-accordion-content);
     color: var(--text-primary);
   }
-  
-  /* Links */
+
   a {
     color: var(--text-link);
   }
-  
+
   a:active {
     color: var(--text-link-hover);
-    background: rgba(155, 201, 150, 0.15);
+    background: rgba(99, 198, 216, 0.12);
   }
-  
-  /* Videos */
+
+  .organizer-button {
+    color: var(--text-primary);
+  }
+
+  .organizer-button:hover,
+  .organizer-button[aria-expanded="true"] {
+    color: #63C6D8;
+    background: rgba(99, 198, 216, 0.08);
+  }
+
+  .organizer-arrow {
+    color: #63C6D8;
+  }
+
+  .organizer-content {
+    color: var(--text-primary);
+  }
+
+  .organizer-content a {
+    color: #63C6D8;
+  }
+
   .video-figure figcaption {
     color: var(--text-secondary);
   }
-  
-  /* Side Info */
+
   .side-info {
     color: var(--text-primary);
   }
@@ -939,153 +1024,142 @@ main img { max-width: 60%; margin: 20px 0; }
 /* ==========================================================================
    DESKTOP DARK MODE - Für Bildschirme über 1024px
    ========================================================================== */
-@media screen and (min-width: 1280px) and (prefers-color-scheme: dark) {
-  /* Hintergrund */
+@media screen and (min-width: 1025px) and (prefers-color-scheme: dark) {
   body {
     background-color: #121212;
     color: #E0E0E0;
   }
-  
-  /* Navigation */
+
   .main-nav {
     border-bottom-color: #333;
   }
-  
+
   .main-nav .nav-item:not(.subscribe) {
     color: #E0E0E0;
   }
-  
+
   .main-nav .nav-item:not(.subscribe):hover,
   .main-nav .nav-item:not(.subscribe).active {
-    color: #61051B;
+    color: #63C6D8;
   }
-  
-  /* Main Content */
+
   .main-content {
     background: rgba(30, 30, 30, 0.85);
     backdrop-filter: blur(4px);
     color: #E0E0E0;
   }
-  
+
   .main-content h1,
   .main-content h2,
   .main-content h3 {
     color: #009bb9;
   }
-  
+
   .main-content p,
   .main-content li {
     color: #E0E0E0;
   }
-  
-  /* Info-Boxen (Side Info) */
+
   .side-info {
     color: #E0E0E0;
   }
-  
+
   .info-box {
     background: rgba(40, 40, 40, 0.8);
     color: #E0E0E0;
     border: 1px solid #404040;
   }
-  
-  .info-box h3 {
-    color: #E0E0E0;
-  }
-  
+
+  .info-box h3,
   .info-box p {
     color: #E0E0E0;
   }
-  
-  .box-1:hover,
-  .box-2:hover,
-  .box-3:hover,
-  .box-4:hover,
-  .box-5:hover,
-  .box-6:hover,
-  .box-7:hover
-  {
-    border-color: #61051B;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
-  }
-  
-  /* Accordion */
+
   .accordion-button {
     background-color: #2D2D2D;
     color: #E0E0E0;
     border-left-color: #00778F;
   }
-  
+
   .accordion-button:hover {
     background-color: #23748A;
     color: white;
   }
-  
+
   .accordion-button.active {
     background-color: #009bb9;
     color: #FEF9FF;
     border-left-color: #61051B;
   }
-  
+
   .accordion-content {
     background-color: #252525;
     color: #E0E0E0;
     border-left-color: #61051B;
   }
-  
-  /* Links */
-  a {
-    color: #61051B;
+
+  a,
+  .accordion-content a,
+  .info-box a,
+  .main-content a,
+  .organizer-content a {
+    color: #63C6D8;
   }
-  
-  a:hover {
-    color: #3B0402;
+
+  a:hover,
+  .accordion-content a:hover,
+  .info-box a:hover,
+  .main-content a:hover,
+  .organizer-content a:hover {
+    color: #91DCE8;
   }
-  
-  /* Videos */
+
+  .subscribe,
+  .subscribe:hover {
+    color: #FFFFFF;
+  }
+
   .video-figure figcaption {
     color: #B0B0B0;
   }
-  
-  /* Typography */
+
   h1,
   h2,
   h3 {
     color: #009bb9;
   }
-  
-  /* Logo */
+
   .logo h1 {
     color: #F5F0F2;
   }
-  
-  /* Co-Organizer */
-  .coorganizer-body {
+
+  .organizer-section > h3 {
+    color: #009bb9;
+  }
+
+  .organizer-item {
+    border-bottom-color: rgba(99, 198, 216, 0.22);
+  }
+
+  .organizer-button {
     color: #E0E0E0;
   }
-  
-  .coorganizer-body .info-box {
-    background: #252525;
+
+  .organizer-arrow {
+    color: #63C6D8;
+  }
+
+  .organizer-button:hover {
+    color: #91DCE8;
+    background: rgba(99, 198, 216, 0.07);
+  }
+
+  .organizer-button[aria-expanded="true"] {
+    color: #63C6D8;
+  }
+
+  .organizer-content {
     color: #E0E0E0;
-    border-left-color: #00778F;
-  }
-  
-  /* Page Layout */
-  .page-layout {
-    /* Optional: Hintergrund für Desktop anpassen */
-  }
-  
-  /* Links in Content */
-  .accordion-content a,
-  .info-box a,
-  .main-content a {
-    color: #61051B;
-  }
-  
-  .accordion-content a:hover,
-  .info-box a:hover,
-  .main-content a:hover {
-    color: #3B0402;
   }
 }
 
